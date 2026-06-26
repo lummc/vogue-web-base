@@ -179,6 +179,7 @@ export const camilaArticle: ArticleContent = {
   },
   recommendations: {
     title: 'Recomendaciones',
+    featuredTitle: '',
     featuredImageAlt: 'Video 24 horas con Camila Cabello',
     featuredImageTone: 'dark',
     featuredImageSrc: imageMap.articles.camila.body[2],
@@ -224,7 +225,8 @@ export const guadalajaraArticle: ArticleContent = {
   },
   intro: [
     'Guadalajara se ha convertido en la ciudad donde converge arquitectura, arte, gastronomia y diseno.',
-    'Texto pendiente del articulo.',
+    'En este panorama, visitar la Perla Tapatía también promete una experiencia de compras que envuelve todos los sentidos. Entre las calles de sus emblemáticas colonias, como la Americana y Providencia, las tiendas de diseñadores mexicanos y concept stores con curadurías que ponen por delante la producción local son las auténticas joyas de la ciudad.',
+    'Celebramos la escena cultural jalisciense con una selección de las mejores tiendas de marcas mexicanas en Guadalajara, recomendadas por editoras y voces influyentes de la moda loca',
   ],
   quoteImage: {
     quote: '¿Donde comprar marcas de moda en Guadalajara?',
@@ -235,10 +237,10 @@ export const guadalajaraArticle: ArticleContent = {
     imageSrc: imageMap.articles.guadalajara.body[0],
   },
   body: [
-    'EMPATHY STORE',
+    'EMPATHY adads STORE',
     'La curaduria de marcas mexicanas en Empathy Store no es convencional y eso es lo que lo hace unico y especial.',
-    'Imperdible en Empathy Store',
-    'Texto pendiente del articulo.',
+    'Es un lugar para descubrir talento al frente de prendas con tejidos y propuestas de calidad.',
+    'Empathy Store habita una casa de los cuarenta diseñada por el ingeniero Ugarte. “Fue restaurada cuidadosamente para preservar su esencia original. Se rescataron los pisos, las herrerías y muchos de los elementos arquitectónicos que forman parte de la identidad de la casa”, cuenta la fundadora Vanessa Corona, quien ha estado al frente del proyecto por más de once años. “La arquitectura, los materiales, la vegetación, la iluminación y la música forman parte de una experiencia pensada para descubrir el diseño de una manera más pausada y sensible.”',
     'STUDIO CONCHITA GUADALAJARA',
     'Texto pendiente del articulo.',
     'UGGA CONCEPT STORE',

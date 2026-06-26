@@ -1665,18 +1665,18 @@
 
 .inline-article-image {
   display: grid;
-  grid-template-columns: 594px 222px;
-  justify-self: center;
-  transform: translateX(90px);
-  gap: 28px;
+  grid-template-columns: 720px 140px;
+  gap: 56px;
   align-items: start;
-  width: 844px;
-  margin: 42px 0 44px -125px;
+  max-width: 1060px;
+  margin: 42px auto 44px;
 }
 
 .inline-article-image__media {
   width: 594px;
   height: 520px;
+  justify-self: center;
+  transform: translateX(-60px);
   border-radius: 4px;
   background: linear-gradient(135deg, #3b332b 0%, #a5856a 50%, #ead5ba 100%);
 }
@@ -1694,7 +1694,8 @@
 }
 
 .inline-article-image figcaption {
-  margin: 0;
+  width: 180px;
+transform: translateX(-160px);
   color: var(--color-text-muted-alt);
   font-family: var(--font-sans);
   font-size: 16px;
