@@ -53,6 +53,8 @@ export type ArticleContent = {
     articles: PromoArticle[];
   };
   longform?: {
+    // For articles with variant: 'longform', only this blocks array is rendered.
+    // Add new text as: { type: 'paragraph', text: 'Nuevo parrafo...' }
     blocks: LongArticleBlock[];
     favoriteCarousel: {
       title: string;
@@ -288,14 +290,16 @@ export const guadalajaraArticle: ArticleContent = {
     articles: camilaArticle.recommendations.articles,
   },
   longform: {
+    // Longform articles render this array, not intro/body legacy fields.
+    // Example: { type: 'paragraph', text: 'Nuevo parrafo...' }
     blocks: [
       {
         type: 'paragraph',
-        text: 'Guadalajara se ha convertido en la ciudad donde converge arquitectura, arte, gastronomia y diseno. En este panorama, visitar la Perla Tapatia tambien permite una experiencia de compras que suma todos los sentidos.',
+        text: 'Guadalajara se ha convertido en la ciudad donde converge arquitectura, arte, gastronomia y diseno. En este panorama, visitar la Perla Tapatia tambien permite una experiencia de compras que suma todos los sentidos. Entre las calles de sus emblemáticas colonias, como la Americana y Providencia, las tiendas de diseñadores mexicanos y concept stores con curadurías que ponen por delante la producción local son las auténticas joyas de la ciudad.',
       },
       {
         type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
+        text: 'Celebramos la escena cultural jalisciense con una selección de las mejores tiendas de marcas mexicanas en Guadalajara, recomendadas por editoras y voces influyentes de la moda local.',
       },
       {
         type: 'heading',
@@ -307,7 +311,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'La curaduria de marcas mexicanas en Empathy Store no es convencional y eso es lo que lo hace unico y especial.',
+        text: 'La curaduría de marcas mexicanas en Empathy Store no es convencional y eso es lo que la hace única y especial. Es un lugar para descubrir talento al frente de prendas con tejidos y propuestas de calidad. Empathy Store habita una casa de los cuarenta diseñada por el ingeniero Ugarte. “Fue restaurada cuidadosamente para preservar su esencia original. Se rescataron los pisos, las herrerías y muchos de los elementos arquitectónicos que forman parte de la identidad de la casa”, cuenta la fundadora Vanessa Corona, quien ha estado al frente del proyecto por más de once años. “La arquitectura, los materiales, la vegetación, la iluminación y la música forman parte de una experiencia pensada para descubrir el diseño de una manera más pausada y sensible”.',
       },
       {
         type: 'image',
@@ -318,7 +322,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Empathy es LA tienda de moda mexicana. Texto pendiente del articulo.',
+        text: 'Empathy es LA tienda de moda mexicana. Con su nueva locación en la Americana, no hay semana que no pase para ver qué hay nuevo y tomarme un café en “Masita” abajo. Ser testigo de Vanessa en acción con sus clientes es una obra de arte: no solamente entiende cómo curar una tienda, sino que también entiende cómo las mujeres hoy en día realmente quieren vestir”. —Lindsey Alt, Fundadora & CEO de Alt Creative Agency.',
       },
       {
         type: 'heading',
@@ -326,7 +330,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'El Látaming Room de Marqués Grupo, un espacio dedicado a la escucha de alta fidelidad creado por uno de los expertos mas importantes en la historia del audio en Mexico. Texto pendiente del articulo.',
+        text: 'El Látaming Room de Marqués Grupo, un espacio dedicado a la escucha de alta fidelidad creado por uno de los expertos mas importantes en la historia del audio en Mexico. Es un honor compartir espacio con un proyecto de tanto nivel. Todo el espacio de la tienda también está sonorizado por Margules, por lo que la experiencia auditiva forma parte esencial del recorrido. También conservamos el mismo aroma que nos ha acompañado durante más de once años y que se ha convertido en parte de la identidad de la tienda.',
       },
       {
         type: 'heading',
@@ -334,7 +338,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Fue nuestro primer flagship store. Cada detalle, desde la paleta de colores hasta el mobiliario hecho a medida, fue pensado para reflejar nuestro universo de manera intencional.',
+        text: '“Fue nuestra primera flagship store. Cada detalle, desde la paleta de colores hasta el mobiliario hecho a medida (en colaboración con Daniel Quirarte), fue pensado para reflejar nuestra visión: diseño atemporal, intención y una conexión profunda con los materiales”, cuenta Renata Blanco, fundadora de Studio Conchita. La tienda está en el primer piso de una casa en la colonia Americana, donde se puede apreciar la visión sobre la joyería que resalta la belleza de la vida marina y la incorpora a la moda con una mirada contemporánea.',
       },
       {
         type: 'image',
@@ -345,7 +349,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
+        text: '“Esta tienda fue la primera que abrió Studio Conchita en México (porque es su ciudad de origen), y siempre la recomiendo visitar, porque es muy bello poder ver la tradición del vidrio –un material tan característico de Guadalajara–, pero de una manera contemporánea, juguetona y sofisticada. Además, acaban de incorporar una sección de "finds" de piezas únicas de otros lugares del mundo. Sus anillos onda, son de mis piezas favoritas de joyería y una gran manera de ser parte de la marca”. —Talía Cu, autora de Latin Zine.',
       },
       {
         type: 'heading',
@@ -353,7 +357,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
+        text: 'Abel López, Amkie Gamus, Cynthia Buttenklepper, Raquel Orozco y Vero Díaz son algunas de las firmas que se pueden encontrar en Ugga Concept Store. “Se ha convertido hoy en un referente de diseño mexicano y amor propio para la mujer contemporánea en Guadalajara”, confiesa Ileana Hurtado, quien asumió la dirección de UGGA en 2017. “Este proyecto, que heredé de la visión de mi madre y de una larga tradición familiar en la moda”.',
       },
       {
         type: 'image',
@@ -364,7 +368,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
+        text: 'Cada detalle, desde la iluminación hasta las texturas, está pensado para evocar paz, sofisticación y calidez”. La curaduría de marcas habla de trascendencia en la moda mexicana. “No seguimos tendencias pasajeras; nos dedicamos a crear una curaduría impecable, elegante y diversa que equilibra perfectamente a las marcas nacionales ya consolidadas con los nuevos talentos emergentes más prometedores”',
       },
       {
         type: 'heading',
@@ -372,7 +376,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Este espacio, curado por los diseñadores mexicanos Julia y Renata, es un lugar imprescindible para encontrar diseño contemporaneo mexicano.',
+        text: 'Este espacio, curado por las diseñadoras mexicanas Julia y Renata, es un lugar imprescindible para encontrar diseño contemporáneo mexicano. Detrás de cada objeto hay una historia que reúne herencia artesanal y sensibilidad estética.',
       },
       {
         type: 'image',
@@ -383,7 +387,7 @@ export const guadalajaraArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
+        text: '“La moda mexicana no se encuentra en un espacio conveniente como en una plaza enorme ubicada en cada punto clave de la ciudad… Usualmente está en un pintoresco espacio, independiente del siguiente, al lado de algún cafecito en la colonia Americana o Providencia. En estas tiendas la curación es intencional. Las fui conociendo a la par que fui conociendo otros nuevos lugares: calles, restaurantes, cafecitos y marcas; cada una tiene lo suyo y con cada una he armado memorias”. —Baby Bangs.',
       },
     ],
     favoriteCarousel: {
@@ -410,8 +414,8 @@ export const bafweekArticle: ArticleContent = {
     imageSrc: imageMap.articles.bafweek.hero,
   },
   intro: [
-    'BAFWEEK volvio a consolidarse como una de las semanas de la moda mas importantes del pais.',
-    'Texto pendiente del articulo.',
+    'BAFWEEK volvio a consolidarse como una de las semanas de la moda mas importantes del pais. ',
+    'En su 25 aniversariolas semanas de la moda más importantes del país.En su 25 aniversario, el evento reunió a firmas consagradas y emergentes para presentar lo nuevo de la temporada otoño-invierno 2026. La Rural se convirtió en el centro de escena, acompañada por otras locaciones de la Ciudad de Buenos Aires que ampliaron el recorrido de los desfiles y las performances.',
   ],
   quoteImage: {
     quote: 'Texto pendiente del articulo.',
@@ -468,14 +472,12 @@ export const bafweekArticle: ArticleContent = {
     articles: camilaArticle.recommendations.articles,
   },
   longform: {
+    // Longform articles render this array, not intro/body legacy fields.
+    // Example: { type: 'paragraph', text: 'Nuevo parrafo...' }
     blocks: [
       {
         type: 'paragraph',
-        text: 'BAFWEEK volvio a consolidarse como una de las semanas de la moda mas importantes del pais. En sus 25 aniversario, el evento reunio a firmas consagradas y emergentes.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
+        text: 'BAFWEEK volvio a consolidarse como una de las semanas de la moda mas importantes del pais. En su 25 aniversariolas semanas de la moda más importantes del país.En su 25 aniversario, el evento reunió a firmas consagradas y emergentes para presentar lo nuevo de la temporada otoño-invierno 2026. La Rural se convirtió en el centro de escena, acompañada por otras locaciones de la Ciudad de Buenos Aires que ampliaron el recorrido de los desfiles y las performances.',
       },
       {
         type: 'image',
