@@ -1585,6 +1585,7 @@
 .article-quote-image__media {
   width: 594px;
   height: 792px;
+  justify-self: center;
   border-radius: 4px;
   background: linear-gradient(135deg, #514235 0%, #b29475 52%, #eee0c5 100%);
 }
