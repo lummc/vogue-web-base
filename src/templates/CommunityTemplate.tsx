@@ -5,6 +5,7 @@ import { PromoArticleCard } from '../components/cards/PromoArticleCard';
 import { Footer } from '../components/layout/Footer';
 import { HeaderDesktop } from '../components/layout/HeaderDesktop';
 import { communityContent } from '../data/communityContent';
+import { imageMap } from '../data/imageMap';
 import type { PromoArticle } from '../data/mockContent';
 import { isVogueUserLoggedIn, setVogueUserLoggedIn, subscribeToVogueAuthChange } from '../utils/authState';
 import { navigateTo, routePath } from '../utils/routes';
@@ -30,6 +31,7 @@ function CommunitySidebar({ onLogout }: { onLogout: () => void }) {
         </button>
       </nav>
       <div className="community-sidebar__card">
+        <img src={imageMap.articles.camila.hero} alt="Editorial Comunidad Vogue" />
         <span>Bienvenida Fernanda!</span>
       </div>
     </aside>
