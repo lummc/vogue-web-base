@@ -14,7 +14,7 @@ export function HomeTemplate({ data }: { data: HomePage }) {
   return (
     <div className="page-shell">
       <HeaderDesktop />
-      <main>
+      <main className="home-main">
         <HeroNews item={data.hero} items={[data.hero, ...data.actualidad.smallCards]} />
         <ActualidadSection smallCards={data.actualidad.smallCards} featured={data.actualidad.featured} />
         <VogueChoiceSection
@@ -24,7 +24,7 @@ export function HomeTemplate({ data }: { data: HomePage }) {
           looks={data.vogueChoice.looks}
         />
         <ReelsSection reels={data.reels} />
-        <JoinUsSection item={data.joinUs} />
+        <JoinUsSection item={data.joinUs} homeLayout />
         <EditorialCarouselSection title="Moda y Belleza" articles={data.modaBelleza} />
         <EditorialFeatureStrip title="No te lo pierdas" articles={data.noTeLoPierdas} />
       </main>
