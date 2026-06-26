@@ -327,6 +327,7 @@
 
 .vogue-choice__track > *,
 .reels-section__track > *,
+.editorial-carousel-section__grid > *,
 .section-trend-carousel > *,
 .section-video-carousel > *,
 .section-article-carousel > *,
@@ -647,6 +648,7 @@
 
 .vogue-choice__track {
   display: flex;
+  width: max-content;
   height: 785px;
   padding-left: 0;
   transform: translateX(-44px);
@@ -758,10 +760,13 @@
 .reels-section__track {
   display: flex;
   gap: 48px;
+  width: 100%;
   height: 610px;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .reels-section__track::-webkit-scrollbar {
@@ -912,10 +917,24 @@
 }
 
 .editorial-carousel-section__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 46px;
   margin-top: 36px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.editorial-carousel-section__grid::-webkit-scrollbar {
+  display: none;
+}
+
+.editorial-carousel-section__grid .promo-article-card {
+  width: 454px;
+  flex: 0 0 454px;
 }
 
 .editorial-feature-strip {
@@ -1261,7 +1280,9 @@
   margin-top: 44px;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .section-trend-carousel::-webkit-scrollbar {
@@ -1288,7 +1309,9 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 4px;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .section-video-carousel::-webkit-scrollbar {
@@ -1786,7 +1809,9 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 4px;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .article-favorite-carousel__track::-webkit-scrollbar {
@@ -1816,7 +1841,9 @@
   margin-top: 24px;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .article-recommendations__carousel::-webkit-scrollbar {
@@ -1851,7 +1878,9 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 4px;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .section-article-carousel::-webkit-scrollbar {
@@ -2490,7 +2519,9 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0 0 4px;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .community-card-row::-webkit-scrollbar,

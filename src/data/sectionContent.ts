@@ -323,6 +323,7 @@ export const estiloDeVidaSection: SectionPageData = {
     date: '1 de Junio de 2026',
     imageAlt: 'Editorial de estilo de vida en sofa',
     imageTone: 'ivory',
+    href: '/articulo/camila',
     imageSrc: imageMap.estiloDeVida.hero,
   },
   blocks: [
@@ -337,7 +338,6 @@ export const estiloDeVidaSection: SectionPageData = {
           date: '8 de junio de 2026',
           imageAlt: 'Shakira en escenario',
           imageTone: 'warm',
-          href: '/articulo/camila',
           imageSrc: imageMap.estiloDeVida.musica[0],
         },
         {
