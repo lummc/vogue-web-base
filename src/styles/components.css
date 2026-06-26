@@ -1563,6 +1563,8 @@
 
 .article-quote-image blockquote {
   position: absolute;
+  right: 90px;
+  top: 56px;
   z-index: 1;
   width: 190px;
   margin: 56px auto;;
@@ -1586,6 +1588,7 @@
   width: 594px;
   height: 792px;
   justify-self: center;
+  transform: translateX(90px);
   border-radius: 4px;
   background: linear-gradient(135deg, #514235 0%, #b29475 52%, #eee0c5 100%);
 }
@@ -1663,6 +1666,8 @@
 .inline-article-image {
   display: grid;
   grid-template-columns: 594px 222px;
+  justify-self: center;
+  transform: translateX(90px);
   gap: 28px;
   align-items: start;
   width: 844px;
