@@ -2115,9 +2115,9 @@ transform: translateX(-160px);
 .site-footer {
   position: relative;
   width: 100%;
-  max-width: 1441px;
+  max-width: none;
   height: 518px;
-  margin: 0 auto;
+  margin: 24px 0 0;
   background: var(--color-black);
   color: var(--color-white);
 }
@@ -2142,10 +2142,11 @@ transform: translateX(-160px);
 .site-footer__socials {
   position: absolute;
   top: 195px;
-  left: 285px;
+  left: 50%;
   display: flex;
   align-items: center;
   gap: 64px;
+  transform: translateX(-50%);
 }
 
 .footer-social {
