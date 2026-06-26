@@ -3,6 +3,7 @@ import { FormEvent, useState } from 'react';
 import { imageMap } from '../data/imageMap';
 import { Footer } from '../components/layout/Footer';
 import { setVogueUserLoggedIn } from '../utils/authState';
+import { navigateTo, routePath } from '../utils/routes';
 import '../styles/components.css';
 
 export function AuthTemplate({ mode = 'registro' }: { mode?: 'login' | 'registro' }) {
@@ -11,7 +12,7 @@ export function AuthTemplate({ mode = 'registro' }: { mode?: 'login' | 'registro
 
   const completeAuth = () => {
     setVogueUserLoggedIn(true);
-    window.location.href = '/';
+    navigateTo('/');
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -22,7 +23,7 @@ export function AuthTemplate({ mode = 'registro' }: { mode?: 'login' | 'registro
   return (
     <div className="page-shell auth-page-shell">
       <header className="auth-page-header">
-        <a href="/" className="auth-page-header__brand" aria-label="Vogue Mexico home">
+        <a href={routePath('/')} className="auth-page-header__brand" aria-label="Vogue Mexico home">
           <span>VOGUE</span>
           <small>Mexico y Latinoamerica</small>
         </a>
@@ -34,7 +35,7 @@ export function AuthTemplate({ mode = 'registro' }: { mode?: 'login' | 'registro
           <p>La moda es parte de contar quienes somos</p>
         </section>
         <section className="auth-page__panel" aria-labelledby="auth-title">
-          <a className="auth-page__close" href="/" aria-label="Cerrar">
+          <a className="auth-page__close" href={routePath('/')} aria-label="Cerrar">
             <X size={34} strokeWidth={1.6} />
           </a>
           <p className="auth-page__eyebrow">Comunidad Vogue</p>

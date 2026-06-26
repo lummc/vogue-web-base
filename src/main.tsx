@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HomeTemplate } from './templates/HomeTemplate';
 import { ArticleTemplate } from './templates/ArticleTemplate';
@@ -15,6 +15,7 @@ import {
   modaSection,
   vogueMediaSection,
 } from './data/sectionContent';
+import { readRoutePath } from './utils/routes';
 import './styles/global.css';
 
 const sectionPages = {
@@ -26,17 +27,17 @@ const sectionPages = {
   '/vogue-media': vogueMediaSection,
 };
 
-const sectionData = sectionPages[window.location.pathname as keyof typeof sectionPages];
 const articlePages = {
   '/articulo/camila': camilaArticle,
   '/articulo/guadalajara': guadalajaraArticle,
   '/articulo/bafweek': bafweekArticle,
 };
 
-const articleData = articlePages[window.location.pathname as keyof typeof articlePages];
-const path = window.location.pathname;
-const page =
-  path === '/registro' ? (
+function resolvePage(path: string) {
+  const sectionData = sectionPages[path as keyof typeof sectionPages];
+  const articleData = articlePages[path as keyof typeof articlePages];
+
+  return path === '/registro' ? (
     <AuthTemplate />
   ) : path === '/login' ? (
     <AuthTemplate mode="login" />
@@ -49,9 +50,23 @@ const page =
   ) : (
     <HomeTemplate data={homePage} />
   );
+}
+
+function App() {
+  const [path, setPath] = useState(readRoutePath());
+
+  useEffect(() => {
+    const handleHashChange = () => setPath(readRoutePath());
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  return resolvePage(path);
+}
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    {page}
+    <App />
   </StrictMode>,
 );

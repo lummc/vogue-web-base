@@ -1,4 +1,5 @@
 import { imageMap } from './imageMap';
+import { routePath } from '../utils/routes';
 
 export type Article = {
   category: string;
@@ -40,12 +41,12 @@ export type PromoArticle = {
 };
 
 export const navItems = [
-  { label: 'Moda', href: '/moda' },
-  { label: 'Belleza', href: '/belleza' },
-  { label: 'Estilo de vida', href: '/estilo-de-vida' },
-  { label: 'Hollywood', href: '/hollywood' },
-  { label: 'Vogue media', href: '/vogue-media' },
-  { label: 'Convocatorias', href: '/convocatorias' },
+  { label: 'Moda', href: routePath('/moda') },
+  { label: 'Belleza', href: routePath('/belleza') },
+  { label: 'Estilo de vida', href: routePath('/estilo-de-vida') },
+  { label: 'Hollywood', href: routePath('/hollywood') },
+  { label: 'Vogue media', href: routePath('/vogue-media') },
+  { label: 'Convocatorias', href: routePath('/convocatorias') },
 ];
 
 export const homePage = {

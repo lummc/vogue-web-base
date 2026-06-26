@@ -1,4 +1,5 @@
 import type { Article } from '../../data/mockContent';
+import { routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
 export function RecuadroCard({ article }: { article: Article }) {
@@ -21,7 +22,7 @@ export function RecuadroCard({ article }: { article: Article }) {
   return (
     <article className="recuadro-card">
       {article.href ? (
-        <a className="card-link" href={article.href}>
+        <a className="card-link" href={routePath(article.href)}>
           {content}
         </a>
       ) : (

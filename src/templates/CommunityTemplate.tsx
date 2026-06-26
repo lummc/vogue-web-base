@@ -7,6 +7,7 @@ import { HeaderDesktop } from '../components/layout/HeaderDesktop';
 import { communityContent } from '../data/communityContent';
 import type { PromoArticle } from '../data/mockContent';
 import { isVogueUserLoggedIn, setVogueUserLoggedIn } from '../utils/authState';
+import { navigateTo, routePath } from '../utils/routes';
 import '../styles/components.css';
 
 type MetricArticle = PromoArticle & { metric: string };
@@ -14,7 +15,7 @@ type MetricArticle = PromoArticle & { metric: string };
 function CommunitySidebar({ onLogout }: { onLogout: () => void }) {
   return (
     <aside className="community-sidebar" aria-label="Menu de usuario">
-      <a href="/" className="community-sidebar__close" aria-label="Cerrar">
+      <a href={routePath('/')} className="community-sidebar__close" aria-label="Cerrar">
         <X size={28} strokeWidth={1.6} />
       </a>
       <h2>
@@ -22,7 +23,7 @@ function CommunitySidebar({ onLogout }: { onLogout: () => void }) {
         Fernanda
       </h2>
       <nav>
-        <a href="/comunidad">Comunidad vogue</a>
+        <a href={routePath('/comunidad')}>Comunidad vogue</a>
         <a href="mailto:hola@vogue.mx">Comunicate con nosotros</a>
         <button type="button" onClick={onLogout}>
           Cerrar sesion
@@ -83,14 +84,14 @@ export function CommunityTemplate() {
 
   useEffect(() => {
     if (!loggedIn) {
-      window.location.replace('/registro');
+      navigateTo('/registro', true);
     }
   }, [loggedIn]);
 
   const logout = () => {
     setVogueUserLoggedIn(false);
     setLoggedIn(false);
-    window.location.href = '/registro';
+    navigateTo('/registro');
   };
 
   if (!loggedIn) {

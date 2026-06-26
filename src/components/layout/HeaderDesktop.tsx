@@ -1,14 +1,15 @@
 import { CircleUserRound, Search } from 'lucide-react';
 import { navItems } from '../../data/mockContent';
 import { isVogueUserLoggedIn } from '../../utils/authState';
+import { routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
 export function HeaderDesktop() {
-  const accountHref = isVogueUserLoggedIn() ? '/comunidad' : '/registro';
+  const accountHref = isVogueUserLoggedIn() ? routePath('/comunidad') : routePath('/registro');
 
   return (
     <header className="site-header">
-      <a className="site-header__brand" href="/" aria-label="Vogue Mexico home">
+      <a className="site-header__brand" href={routePath('/')} aria-label="Vogue Mexico home">
         <span>VOGUE</span>
         <small>Mexico y Latinoamerica</small>
       </a>
@@ -22,7 +23,7 @@ export function HeaderDesktop() {
       </div>
       <nav className="desktop-nav" aria-label="Principal">
         {navItems.map((item) => (
-          <a href={item.href} key={item.href}>
+          <a href={routePath(item.href)} key={item.href}>
             {item.label}
           </a>
         ))}

@@ -1,4 +1,5 @@
 import type { SectionHeroData } from '../../data/sectionContent';
+import { routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
 export function SectionHero({ hero }: { hero: SectionHeroData }) {
@@ -19,7 +20,7 @@ export function SectionHero({ hero }: { hero: SectionHeroData }) {
   return (
     <section className={`section-hero section-hero--${hero.imageTone}`} aria-label={hero.title}>
       {hero.href ? (
-        <a className="section-hero__link" href={hero.href}>
+        <a className="section-hero__link" href={routePath(hero.href)}>
           {content}
         </a>
       ) : (

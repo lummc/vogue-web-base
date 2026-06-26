@@ -1,4 +1,5 @@
 import type { Article } from '../../data/mockContent';
+import { routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
 export function FeaturedArticleCard({ article }: { article: Article }) {
@@ -18,7 +19,7 @@ export function FeaturedArticleCard({ article }: { article: Article }) {
     >
       {article.imageSrc ? <img src={article.imageSrc} alt={article.imageAlt} /> : null}
       {article.href ? (
-        <a className="card-link card-link--fill" href={article.href}>
+        <a className="card-link card-link--fill" href={routePath(article.href)}>
           {content}
         </a>
       ) : (

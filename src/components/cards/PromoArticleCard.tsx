@@ -1,4 +1,5 @@
 import type { PromoArticle } from '../../data/mockContent';
+import { routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
 type PromoArticleCardProps = {
@@ -29,7 +30,7 @@ export function PromoArticleCard({ article, variant = 'standard' }: PromoArticle
   return (
     <article className={`promo-article-card promo-article-card--${variant}`}>
       {article.href ? (
-        <a className="card-link" href={article.href}>
+        <a className="card-link" href={routePath(article.href)}>
           {content}
         </a>
       ) : (
