@@ -236,6 +236,8 @@
   margin: 0 auto;
   overflow: hidden;
   background: var(--color-black);
+  box-shadow: 0 0 0 100vmax var(--color-black);
+  clip-path: inset(0 -100vmax);
 }
 
 .hero-news__image {
@@ -1070,6 +1072,8 @@
   margin: 0 auto;
   overflow: hidden;
   background: var(--color-black);
+  box-shadow: 0 0 0 100vmax var(--color-black);
+  clip-path: inset(0 -100vmax);
 }
 
 .section-hero__image {
@@ -1415,6 +1419,8 @@
   margin: 0 auto;
   overflow: hidden;
   background: var(--color-black);
+  box-shadow: 0 0 0 100vmax var(--color-black);
+  clip-path: inset(0 -100vmax);
 }
 
 .article-hero__image {
