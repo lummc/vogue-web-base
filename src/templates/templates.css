@@ -1,0 +1,51 @@
+.home-hero {
+  height: 842px;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.35) 100%),
+    linear-gradient(135deg, #dadada, #323232);
+}
+
+.home-section {
+  padding-top: 44px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 335px 335px 454px;
+  align-items: start;
+  gap: 40px;
+  margin-top: 44px;
+}
+
+.carousel-card {
+  width: 527px;
+  min-height: 708px;
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+}
+
+.carousel-card__media {
+  height: 520px;
+}
+
+.carousel-card h3 {
+  margin: 18px 20px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  .home-hero {
+    height: 535px;
+  }
+
+  .home-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-card {
+    width: 358px;
+    min-height: 481px;
+  }
+}

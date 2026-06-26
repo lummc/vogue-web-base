@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "Mona Sans";
+  src:
+    url("https://raw.githubusercontent.com/github/mona-sans/main/fonts/variable/MonaSans%5Bwdth,wght%5D.woff2")
+      format("woff2 supports variations"),
+    url("https://raw.githubusercontent.com/github/mona-sans/main/fonts/variable/MonaSans%5Bwdth,wght%5D.woff2")
+      format("woff2");
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-page: #efe5d2;
+  --color-ink: #000000;
+  --color-ink-soft: #0d0d0d;
+  --color-brand-wine: #480c1d;
+  --color-logo-wine: #220c12;
+  --color-text-muted: #616161;
+  --color-text-muted-alt: #626262;
+  --color-text-soft: #7f7575;
+  --color-border-light: #dadada;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-grey-meta: #c4c4c4;
+
+  --font-brand: "Bodoni Moda", Didot, "Times New Roman", serif;
+  --font-display: "Mona Sans", Inter, Arial, sans-serif;
+  --font-sans: "Mona Sans", Inter, Arial, sans-serif;
+  --font-meta: "Mona Sans", Montserrat, Arial, sans-serif;
+
+  --page-max: 1440px;
+  --desktop-margin: 118px;
+  --mobile-margin: 16px;
+  --content-max: 1204px;
+  --rule-inset: 20px;
+
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 20px;
+  --space-lg: 40px;
+  --space-xl: 59px;
+  --space-carousel: 82px;
+  --space-reel-gap: 92px;
+
+  --radius-image: 10px;
+  --radius-button: 10px;
+  --radius-card: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.page-shell {
+  min-height: 100vh;
+  background: var(--color-page);
+}
+
+.section-rule {
+  width: calc(100% - (var(--rule-inset) * 2));
+  margin: 0 var(--rule-inset);
+  border: 0;
+  border-top: 1px solid var(--color-brand-wine);
+}
+
+.section-frame {
+  width: min(calc(100% - (var(--desktop-margin) * 2)), var(--content-max));
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 767px) {
+  .section-frame {
+    width: calc(100% - (var(--mobile-margin) * 2));
+  }
+}
