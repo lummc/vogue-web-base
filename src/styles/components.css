@@ -416,7 +416,7 @@
 .actualidad-section__grid {
   display: flex;
   align-items: flex-start;
-  height: 1088px;
+  height: 100%;
   margin-top: 0;
 }
 
