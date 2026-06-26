@@ -1,4 +1,6 @@
-const imagePath = (folder: string, file: string) => `/images/${folder}/${file}`;
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
+const imagePath = (folder: string, file: string) => withBase(`/images/${folder}/${file}`);
 
 export const imageMap = {
   home: {
