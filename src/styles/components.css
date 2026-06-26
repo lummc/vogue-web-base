@@ -1553,11 +1553,12 @@
 }
 
 .article-quote-image {
+  max-width: 980px;
+  margin: 56px auto;
   display: grid;
-  grid-template-columns: 594px 222px;
-  gap: 28px;
-  width: 844px;
-  margin: 64px auto 48px;
+  grid-template-columns: 720px 140px;
+  gap: 32px;
+  align-items: start;
 }
 
 .article-quote-image blockquote {
@@ -1597,6 +1598,7 @@
 }
 
 .article-quote-image figcaption {
+   width: 140px;
   margin: 0;
   color: var(--color-text-muted-alt);
   font-family: var(--font-sans);
@@ -1759,7 +1761,6 @@
 }
 
 .article-recommendations h2 {
-  margin: 0;
   color: var(--color-text-muted);
   font-family: var(--font-sans);
   font-size: 36px;

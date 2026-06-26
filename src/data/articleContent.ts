@@ -179,7 +179,6 @@ export const camilaArticle: ArticleContent = {
   },
   recommendations: {
     title: 'Recomendaciones',
-    featuredTitle: '24 horas con Camila Cabello',
     featuredImageAlt: 'Video 24 horas con Camila Cabello',
     featuredImageTone: 'dark',
     featuredImageSrc: imageMap.articles.camila.body[2],
