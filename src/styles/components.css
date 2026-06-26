@@ -1553,11 +1553,11 @@
 }
 
 .article-quote-image {
-  max-width: 980px;
+  max-width: 1060px;
   margin: 56px auto;
   display: grid;
   grid-template-columns: 720px 140px;
-  gap: 32px;
+  gap: 56px;
   align-items: start;
 }
 
