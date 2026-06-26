@@ -1565,7 +1565,7 @@
   position: absolute;
   z-index: 1;
   width: 190px;
-  margin: 20px 0 0 24px;
+  margin: 56px auto;;
   color: var(--color-ink-soft);
   font-family: var(--font-sans);
   font-size: 18px;
