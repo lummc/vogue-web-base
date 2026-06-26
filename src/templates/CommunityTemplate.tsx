@@ -6,7 +6,7 @@ import { Footer } from '../components/layout/Footer';
 import { HeaderDesktop } from '../components/layout/HeaderDesktop';
 import { communityContent } from '../data/communityContent';
 import type { PromoArticle } from '../data/mockContent';
-import { isVogueUserLoggedIn, setVogueUserLoggedIn } from '../utils/authState';
+import { isVogueUserLoggedIn, setVogueUserLoggedIn, subscribeToVogueAuthChange } from '../utils/authState';
 import { navigateTo, routePath } from '../utils/routes';
 import '../styles/components.css';
 
@@ -81,6 +81,14 @@ function RankingSection({
 
 export function CommunityTemplate() {
   const [loggedIn, setLoggedIn] = useState(isVogueUserLoggedIn());
+
+  useEffect(
+    () =>
+      subscribeToVogueAuthChange(() => {
+        setLoggedIn(isVogueUserLoggedIn());
+      }),
+    [],
+  );
 
   useEffect(() => {
     if (!loggedIn) {

@@ -1,11 +1,21 @@
 import { CircleUserRound, Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { navItems } from '../../data/mockContent';
-import { isVogueUserLoggedIn } from '../../utils/authState';
+import { isVogueUserLoggedIn, subscribeToVogueAuthChange } from '../../utils/authState';
 import { routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
 export function HeaderDesktop() {
-  const accountHref = isVogueUserLoggedIn() ? routePath('/comunidad') : routePath('/registro');
+  const [loggedIn, setLoggedIn] = useState(isVogueUserLoggedIn);
+  const accountHref = loggedIn ? routePath('/comunidad') : routePath('/registro');
+
+  useEffect(
+    () =>
+      subscribeToVogueAuthChange(() => {
+        setLoggedIn(isVogueUserLoggedIn());
+      }),
+    [],
+  );
 
   return (
     <header className="site-header">

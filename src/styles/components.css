@@ -2116,7 +2116,7 @@ transform: translateX(-160px);
   position: relative;
   width: 100%;
   max-width: 1441px;
-  height: 690px;
+  height: 518px;
   margin: 0 auto;
   background: var(--color-black);
   color: var(--color-white);
@@ -2124,7 +2124,7 @@ transform: translateX(-160px);
 
 .site-footer__brand {
   position: absolute;
-  top: 52px;
+  top: 39px;
   left: 50%;
   width: 316px;
   height: 100px;
@@ -2141,11 +2141,11 @@ transform: translateX(-160px);
 
 .site-footer__socials {
   position: absolute;
-  top: 260px;
-  left: 259px;
+  top: 195px;
+  left: 285px;
   display: flex;
   align-items: center;
-  gap: 85.5px;
+  gap: 64px;
 }
 
 .footer-social {
