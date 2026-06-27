@@ -1772,6 +1772,7 @@
 }
 
 .article-quote-image {
+  position: relative;
   max-width: 1060px;
   margin: 56px auto;
   display: grid;
@@ -1782,11 +1783,11 @@
 
 .article-quote-image blockquote {
   position: absolute;
-  right: 90px;
-  top: 56px;
-  z-index: 1;
+  top: 24px;
+  left: 177px;
+  z-index: 2;
   width: 190px;
-  margin: 56px auto;;
+  margin: 0;
   color: var(--color-ink-soft);
   font-family: var(--font-sans);
   font-size: 18px;
