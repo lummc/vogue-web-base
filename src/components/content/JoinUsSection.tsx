@@ -1,10 +1,21 @@
 import type { PromoArticle } from '../../data/mockContent';
 import '../../styles/components.css';
 
-export function JoinUsSection({ item, homeLayout = false }: { item: PromoArticle; homeLayout?: boolean }) {
+type JoinUsSectionProps = {
+  item: PromoArticle;
+  homeLayout?: boolean;
+  secondaryItems?: PromoArticle[];
+};
+
+export function JoinUsSection({ item, homeLayout = false, secondaryItems = [] }: JoinUsSectionProps) {
+  const editorialLayout = secondaryItems.length > 0;
+
   return (
-    <section className="join-us-section section-frame" aria-labelledby="join-us-title">
-      {homeLayout ? (
+    <section
+      className={`join-us-section section-frame${editorialLayout ? ' join-us-section--editorial' : ''}`}
+      aria-labelledby="join-us-title"
+    >
+      {homeLayout || editorialLayout ? (
         <h2 className="section-title join-us-section__heading" id="join-us-title">
           {item.title}
         </h2>
@@ -14,7 +25,7 @@ export function JoinUsSection({ item, homeLayout = false }: { item: PromoArticle
       </div>
       <div className="join-us-section__content">
         <p className="join-us-section__category">{item.category}</p>
-        {!homeLayout ? (
+        {!homeLayout && !editorialLayout ? (
           <h2 className="join-us-section__title" id="join-us-title">
             {item.title}
           </h2>
@@ -23,6 +34,27 @@ export function JoinUsSection({ item, homeLayout = false }: { item: PromoArticle
         <p className="join-us-section__meta">{item.author}</p>
         <p className="join-us-section__date">{item.date}</p>
       </div>
+      {editorialLayout ? (
+        <div className="join-us-section__secondary-list">
+          {secondaryItems.map((secondary) => (
+            <article className="join-us-section__secondary" key={secondary.title}>
+              <div
+                className={`join-us-section__secondary-media join-us-section__media--${secondary.imageTone}`}
+                role="img"
+                aria-label={secondary.imageAlt}
+              >
+                {secondary.imageSrc ? <img src={secondary.imageSrc} alt={secondary.imageAlt} /> : null}
+              </div>
+              <div className="join-us-section__secondary-content">
+                <p className="join-us-section__category">{secondary.category}</p>
+                <h3>{secondary.title}</h3>
+                <p className="join-us-section__meta">{secondary.author}</p>
+                <p className="join-us-section__date">{secondary.date}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : null}
     </section>
   );
 }

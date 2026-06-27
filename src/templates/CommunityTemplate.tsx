@@ -1,42 +1,16 @@
-import { Bookmark, Eye, Heart, UserRound, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Bookmark, Eye, Heart } from 'lucide-react';
+import { useEffect } from 'react';
 import { LookVoteCard } from '../components/cards/LookVoteCard';
 import { PromoArticleCard } from '../components/cards/PromoArticleCard';
 import { Footer } from '../components/layout/Footer';
 import { HeaderDesktop } from '../components/layout/HeaderDesktop';
 import { communityContent } from '../data/communityContent';
-import { imageMap } from '../data/imageMap';
 import type { PromoArticle } from '../data/mockContent';
-import { isVogueUserLoggedIn, setVogueUserLoggedIn, subscribeToVogueAuthChange } from '../utils/authState';
-import { navigateTo, routePath } from '../utils/routes';
+import { isVogueUserLoggedIn } from '../utils/authState';
+import { navigateTo } from '../utils/routes';
 import '../styles/components.css';
 
 type MetricArticle = PromoArticle & { metric: string };
-
-function CommunitySidebar({ onLogout }: { onLogout: () => void }) {
-  return (
-    <aside className="community-sidebar" aria-label="Menu de usuario">
-      <a href={routePath('/')} className="community-sidebar__close" aria-label="Cerrar">
-        <X size={28} strokeWidth={1.6} />
-      </a>
-      <h2>
-        <UserRound size={28} strokeWidth={1.6} />
-        Fernanda
-      </h2>
-      <nav>
-        <a href={routePath('/comunidad')}>Comunidad vogue</a>
-        <a href="mailto:hola@vogue.mx">Comunicate con nosotros</a>
-        <button type="button" onClick={onLogout}>
-          Cerrar sesion
-        </button>
-      </nav>
-      <div className="community-sidebar__card">
-        <img src={imageMap.articles.camila.hero} alt="Editorial Comunidad Vogue" />
-        <span>Bienvenida Fernanda!</span>
-      </div>
-    </aside>
-  );
-}
 
 function MetricCard({ article, icon }: { article: MetricArticle; icon: 'eye' | 'bookmark' | 'heart' }) {
   const Icon = icon === 'eye' ? Eye : icon === 'bookmark' ? Bookmark : Heart;
@@ -82,27 +56,13 @@ function RankingSection({
 }
 
 export function CommunityTemplate() {
-  const [loggedIn, setLoggedIn] = useState(isVogueUserLoggedIn());
-
-  useEffect(
-    () =>
-      subscribeToVogueAuthChange(() => {
-        setLoggedIn(isVogueUserLoggedIn());
-      }),
-    [],
-  );
+  const loggedIn = isVogueUserLoggedIn();
 
   useEffect(() => {
     if (!loggedIn) {
       navigateTo('/registro', true);
     }
   }, [loggedIn]);
-
-  const logout = () => {
-    setVogueUserLoggedIn(false);
-    setLoggedIn(false);
-    navigateTo('/registro');
-  };
 
   if (!loggedIn) {
     return null;
@@ -174,7 +134,6 @@ export function CommunityTemplate() {
           <RankingSection title="Lo mas likeado esta semana" articles={communityContent.mostLiked} icon="heart" />
         </section>
       </main>
-      <CommunitySidebar onLogout={logout} />
       <Footer />
     </div>
   );

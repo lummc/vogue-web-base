@@ -492,12 +492,8 @@ export const bafweekArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'El maximalismo esta de vuelta. Brillos, tonos contrastantes, accesorios protagonistas, texturas en dialogo y superposicion de capas dominaron las colecciones.',
-      },
-      {
-        type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
-      },
+        text: 'El maximalismo está de vuelta. Brillos, tonos contrastantes, accesorios protagonistas, texturas en diálogo y superposición de capas dominaron las colecciones de Mishka, Kosiuko y Las Pepas. “Sweet Dreams”, la nueva propuesta aniversario de Mishka, abrió las pasarelas con una colección-fiesta que presentó sus piezas como objetos de deseo y declaración de marca. Tacos geométricos, cuero trabajado y texturas brillantes se unieron a un relato con guiño ochentoso, atravesado por referencias al synth-pop y a la noche porteña. Camperas reversibles, abrigos estructurados, botas con tacos geométricos y piezas de marroquinería completaron la propuesta.La noche de Kosiuko fue íntima y glamourosa. Inspirada en Copenhague, la firma creada por Cynthia Kern presentó “Retrofreaks”, donde la reinterpretación del universo retro se plasmó en una estética cruda y vibrante. Layering, denim, cueros, gamuzas y texturas intervenidas definieron una identidad que no replica el pasado, sino que lo atraviesa y lo vuelve presente.',
+        },
       {
         type: 'image',
         imageAlt: 'Mishka BAFWEEK',
@@ -507,7 +503,7 @@ export const bafweekArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Las Pepas revolucionaron la pasarela con Out & About. Texto pendiente del articulo.',
+        text: ' Las Pepas revolucionaron la pasarela con “Out & About”, manteniendo su dupla rojo-rosa como protagonista. Bonnets, boinas, prendas chocolate y estampados inesperados acompañaron una propuesta que también sumó piezas de cuero reinterpretadas en siluetas modernas. Perritos acompañaron a las modelos en su caminata, reforzando la actitud citadina de la firma.',
       },
       {
         type: 'image',
@@ -522,7 +518,7 @@ export const bafweekArticle: ArticleContent = {
       },
       {
         type: 'paragraph',
-        text: 'Los autos de carrera tambien estacionaron en la pasarela. Texto pendiente del articulo.',
+        text: 'Los autos de carrera también estacionaron en la pasarela. La estética de la Fórmula 1 y la cultura de las pistas se filtraron en distintas propuestas, donde la velocidad, la técnica y el espíritu competitivo se tradujeron en códigos de moda.Desde La Plata, De Crisci presentó “BUENOS AIRES – MAR DEL PLATA / 2 HORAS Y MEDIA”, una colección que tomó el automovilismo argentino como motor narrativo. Con trajes oficiales de carrera intervenidos, la marca partió del universo del tuning para llevarlo hacia una lectura urbana y performática. Cada look reforzó la idea de ajuste, intervención y transformación, tensionando velocidad, estructura y cuerpo en una narrativa de alta precisión.',
       },
       {
         type: 'image',
@@ -530,10 +526,6 @@ export const bafweekArticle: ArticleContent = {
         imageTone: 'dark',
         caption: 'Revolver presento su nueva coleccion en la cancha de futbol del Club Atletico Excursionistas',
         imageSrc: imageMap.articles.bafweek.body[3],
-      },
-      {
-        type: 'paragraph',
-        text: 'Texto pendiente del articulo.',
       },
     ],
     favoriteCarousel: {

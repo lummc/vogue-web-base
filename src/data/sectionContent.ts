@@ -32,6 +32,7 @@ export type SectionBlock =
   | {
       type: 'joinUs';
       item: PromoArticle;
+      secondaryItems?: PromoArticle[];
     }
   | {
       type: 'videoCarousel';
@@ -266,6 +267,13 @@ export const modaSection: SectionPageData = {
           imageAlt: 'Sandalias de tacon',
           imageTone: 'dark',
           imageSrc: imageMap.moda.famosos[2],
+        },
+        {
+          category: 'Moda',
+          title: 'La reina Letizia apuesta por el nuevo minimalismo con zapatos metalizados y vestido de flores en verano 2026',
+          imageAlt: 'Reina Letizia con vestido de flores',
+          imageTone: 'dark',
+          imageSrc: imageMap.moda.famosos[3],
         },
       ],
     },
@@ -548,9 +556,9 @@ export const hollywoodSection: SectionPageData = {
         imageSrc: imageMap.hollywood.aniversario[0],
       },
       secondary: {
-        category: 'Hollywood',
-        title: 'Los momentos que definieron la noche aniversario',
-        kicker: 'Un recorrido por entrevistas, videos y escenas detras de camara.',
+        category: '',
+        title: '',
+        kicker: '',
         author: 'Por Vogue',
         date: '12 de junio de 2026',
         imageAlt: 'Video editorial aniversario',
@@ -971,6 +979,26 @@ export const convocatoriasSection: SectionPageData = {
         imageTone: 'ivory',
         imageSrc: imageMap.home.joinUs[0],
       },
+      secondaryItems: [
+        {
+          category: 'Convocatorias',
+          title: 'Panorama MENA: Convocatoria regional abierta de PhotoVogue',
+          author: 'Por PhotoVogue',
+          date: '21 de mayo de 2026',
+          imageAlt: 'Panorama MENA PhotoVogue',
+          imageTone: 'rose',
+          imageSrc: imageMap.home.joinUs[1],
+        },
+        {
+          category: 'Convocatorias',
+          title: 'Buscamos marcas que deseen conectar con nuestra audiencia',
+          author: 'Por Vogue + Casa AD',
+          date: '7 de junio de 2026',
+          imageAlt: 'Convocatoria para marcas',
+          imageTone: 'dark',
+          imageSrc: imageMap.home.joinUs[2],
+        },
+      ],
     },
     {
       type: 'trendCarousel',

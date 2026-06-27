@@ -18,7 +18,7 @@ function renderBlock(block: SectionBlock) {
   }
 
   if (block.type === 'joinUs') {
-    return <JoinUsSection item={block.item} />;
+    return <JoinUsSection item={block.item} secondaryItems={block.secondaryItems} />;
   }
 
   if (block.type === 'videoCarousel') {
