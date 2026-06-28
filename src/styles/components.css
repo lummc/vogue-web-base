@@ -824,13 +824,15 @@
 
 .reels-section__track {
   display: flex;
+  flex-wrap: nowrap;
   gap: 48px;
   width: 100%;
   min-height: 610px;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  touch-action: pan-x;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -841,8 +843,14 @@
 .reel-card {
   width: 335px;
   height: 610px;
-  flex: 0 0 335px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
   color: var(--color-white);
+}
+
+.reel-card__media video {
+  pointer-events: none;
+  user-select: none;
 }
 
 .reel-card__media {
