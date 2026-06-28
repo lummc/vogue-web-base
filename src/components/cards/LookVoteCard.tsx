@@ -13,7 +13,7 @@ export function LookVoteCard({ look }: { look: LookVote }) {
       aria-label={look.imageAlt}
     >
       {look.imageSrc ? <img src={look.imageSrc} alt={look.imageAlt} /> : null}
-      <FavoriteButton pressed={liked} label={`Dar like a ${look.imageAlt}`} onClick={() => setLiked((value) => !value)} />
+      <FavoriteButton pressed={liked} label={`Dar me gusta a ${look.imageAlt}`} onClick={() => setLiked((value) => !value)} />
     </article>
   );
 }

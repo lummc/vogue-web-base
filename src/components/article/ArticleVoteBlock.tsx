@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { ArticleContent } from '../../data/articleContent';
+import { requireVogueAuth } from '../../utils/authInteraction';
 import '../../styles/components.css';
 
 export function ArticleVoteBlock({ vote }: { vote: ArticleContent['vote'] }) {
@@ -18,7 +19,7 @@ export function ArticleVoteBlock({ vote }: { vote: ArticleContent['vote'] }) {
               data-selected={isSelected}
               data-voted={Boolean(selected)}
               key={option.label}
-              onClick={() => setSelected(option.label)}
+              onClick={() => requireVogueAuth(() => setSelected(option.label))}
               type="button"
             >
               <span className="article-vote-option__row">
@@ -26,7 +27,7 @@ export function ArticleVoteBlock({ vote }: { vote: ArticleContent['vote'] }) {
                 {selected ? <strong>{option.percent}%</strong> : null}
               </span>
               <span className="article-vote-option__bar">
-                <span style={{ width: selected ? `${option.percent}%` : '72%' }} />
+                <span style={{ width: selected ? `${option.percent}%` : '0%' }} />
               </span>
             </button>
           );

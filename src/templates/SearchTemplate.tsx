@@ -1,15 +1,37 @@
-import { HeaderDesktop } from '../components/layout/HeaderDesktop';
-import { HeaderMobile } from '../components/layout/HeaderMobile';
+import { ChevronDown } from 'lucide-react';
+import { PromoArticleCard } from '../components/cards/PromoArticleCard';
 import { SearchInput } from '../components/forms/SearchInput';
+import { Footer } from '../components/layout/Footer';
+import { HeaderDesktop } from '../components/layout/HeaderDesktop';
+import { searchResults } from '../data/searchContent';
+import '../styles/components.css';
 
 export function SearchTemplate() {
   return (
-    <div className="page-shell">
+    <div className="page-shell search-page-shell">
       <HeaderDesktop />
-      <HeaderMobile />
-      <main className="section-frame">
-        <SearchInput />
+      <main className="search-page section-frame">
+        <section className="search-page__intro" aria-labelledby="search-page-title">
+          <h1 id="search-page-title">Buscar en Vogue México</h1>
+          <SearchInput />
+          <p>10,000+ Historias en Vogue Mexico</p>
+        </section>
+        <hr className="search-page__rule" />
+        <section className="search-page__filter" aria-label="Orden de resultados">
+          <span>Filtrado por</span>
+          <button type="button">
+            Relevancia
+            <ChevronDown size={22} strokeWidth={1.5} />
+          </button>
+        </section>
+        <hr className="search-page__rule" />
+        <section className="search-results-grid" aria-label="Resultados de búsqueda">
+          {searchResults.map((article) => (
+            <PromoArticleCard article={article} key={`${article.category}-${article.title}`} />
+          ))}
+        </section>
       </main>
+      <Footer />
     </div>
   );
 }

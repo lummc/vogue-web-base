@@ -1,6 +1,8 @@
 import { StrictMode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { AuthRequiredPrompt } from './components/auth/AuthRequiredPrompt';
 import { HomeTemplate } from './templates/HomeTemplate';
+import { SearchTemplate } from './templates/SearchTemplate';
 import { ArticleTemplate } from './templates/ArticleTemplate';
 import { AuthTemplate } from './templates/AuthTemplate';
 import { CommunityTemplate } from './templates/CommunityTemplate';
@@ -41,6 +43,8 @@ function resolvePage(path: string) {
     <AuthTemplate />
   ) : path === '/login' ? (
     <AuthTemplate mode="login" />
+  ) : path === '/busqueda' ? (
+    <SearchTemplate />
   ) : path === '/comunidad' ? (
     <CommunityTemplate />
   ) : articleData ? (
@@ -62,7 +66,12 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  return resolvePage(path);
+  return (
+    <>
+      {resolvePage(path)}
+      <AuthRequiredPrompt />
+    </>
+  );
 }
 
 createRoot(document.getElementById('root') as HTMLElement).render(

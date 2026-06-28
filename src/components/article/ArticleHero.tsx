@@ -1,12 +1,51 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Bookmark, Heart, Share2 } from 'lucide-react';
 import type { ArticleContent } from '../../data/articleContent';
+import { requireVogueAuth } from '../../utils/authInteraction';
 import '../../styles/components.css';
 
 export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
   const [saved, setSaved] = useState(false);
   const [liked, setLiked] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [justSaved, setJustSaved] = useState(false);
+  const [justLiked, setJustLiked] = useState(false);
+  const savedTimer = useRef<number | null>(null);
+  const likedTimer = useRef<number | null>(null);
+
+  useEffect(
+    () => () => {
+      if (savedTimer.current !== null) window.clearTimeout(savedTimer.current);
+      if (likedTimer.current !== null) window.clearTimeout(likedTimer.current);
+    },
+    [],
+  );
+
+  const toggleSaved = () => {
+    requireVogueAuth(() => {
+      if (!saved) {
+        if (savedTimer.current !== null) window.clearTimeout(savedTimer.current);
+        setJustSaved(false);
+        window.requestAnimationFrame(() => setJustSaved(true));
+        savedTimer.current = window.setTimeout(() => setJustSaved(false), 420);
+      }
+
+      setSaved(!saved);
+    });
+  };
+
+  const toggleLiked = () => {
+    requireVogueAuth(() => {
+      if (!liked) {
+        if (likedTimer.current !== null) window.clearTimeout(likedTimer.current);
+        setJustLiked(false);
+        window.requestAnimationFrame(() => setJustLiked(true));
+        likedTimer.current = window.setTimeout(() => setJustLiked(false), 420);
+      }
+
+      setLiked(!liked);
+    });
+  };
 
   const shareArticle = async () => {
     const url = window.location.href;
@@ -36,23 +75,28 @@ export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
       <div className="article-hero__actions" aria-label="Acciones del articulo">
         <button
           type="button"
-          className="article-action-button"
-          aria-label="Guardar articulo"
+          className={`article-action-button${saved ? ' is-saved' : ''}${justSaved ? ' icon-bounce' : ''}`}
+          aria-label={saved ? 'Quitar guardado' : 'Guardar artículo'}
           aria-pressed={saved}
           data-active={saved}
-          onClick={() => setSaved((value) => !value)}
+          onClick={toggleSaved}
         >
           <Bookmark size={34} strokeWidth={1.6} fill={saved ? 'currentColor' : 'none'} />
         </button>
         <button
           type="button"
-          className="article-action-button"
-          aria-label="Me gusta"
+          className={`article-action-button${liked ? ' is-liked' : ''}${justLiked ? ' like-pop' : ''}`}
+          aria-label={liked ? 'Quitar me gusta' : 'Dar me gusta'}
           aria-pressed={liked}
           data-active={liked}
-          onClick={() => setLiked((value) => !value)}
+          onClick={toggleLiked}
         >
           <Heart size={34} strokeWidth={1.6} fill={liked ? 'currentColor' : 'none'} />
+          {justLiked ? (
+            <span className="floating-heart" aria-hidden="true">
+              <Heart size={14} strokeWidth={1.5} fill="currentColor" />
+            </span>
+          ) : null}
         </button>
         <button type="button" className="article-action-button" aria-label="Compartir" data-active={copied} onClick={shareArticle}>
           <Share2 size={34} strokeWidth={1.6} />

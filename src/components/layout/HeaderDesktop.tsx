@@ -49,9 +49,9 @@ export function HeaderDesktop() {
         >
           <CircleUserRound size={45} strokeWidth={1.35} />
         </button>
-        <button className="icon-button icon-button--search" type="button" aria-label="Buscar">
+        <a className="icon-button icon-button--search" href={routePath('/busqueda')} aria-label="Buscar">
           <Search size={39} strokeWidth={1.45} />
-        </button>
+        </a>
       </div>
       <nav className="desktop-nav" aria-label="Principal">
         {navItems.map((item) => (
