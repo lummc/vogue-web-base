@@ -103,3 +103,30 @@ button {
     width: calc(100% - (var(--mobile-margin) * 2));
   }
 }
+
+@media (max-width: 768px) {
+  :root {
+    --mobile-margin: 20px;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .section-frame {
+    width: calc(100% - (var(--mobile-margin) * 2));
+    max-width: none;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .section-rule {
+    width: calc(100% - (var(--mobile-margin) * 2));
+    margin-right: var(--mobile-margin);
+    margin-left: var(--mobile-margin);
+  }
+}
