@@ -1,14 +1,16 @@
-import { CircleUserRound, Search } from 'lucide-react';
+import { CircleUserRound, Menu, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { navItems } from '../../data/mockContent';
 import { isVogueUserLoggedIn, subscribeToVogueAuthChange } from '../../utils/authState';
 import { routePath } from '../../utils/routes';
 import { ProfileDrawer } from './ProfileDrawer';
+import { MobileMenu } from '../navigation/MobileMenu';
 import '../../styles/components.css';
 
 export function HeaderDesktop() {
   const [loggedIn, setLoggedIn] = useState(isVogueUserLoggedIn);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(
     () =>
@@ -35,6 +37,15 @@ export function HeaderDesktop() {
 
   return (
     <header className="site-header">
+      <button
+        className="icon-button icon-button--menu"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded={mobileMenuOpen}
+        onClick={() => setMobileMenuOpen(true)}
+      >
+        <Menu size={30} strokeWidth={1.5} />
+      </button>
       <a className="site-header__brand" href={routePath('/')} aria-label="Vogue Mexico home">
         <span>VOGUE</span>
         <small>Mexico y Latinoamerica</small>
@@ -61,6 +72,7 @@ export function HeaderDesktop() {
         ))}
       </nav>
       <hr className="section-rule" />
+      <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
       {profileOpen ? <ProfileDrawer loggedIn={loggedIn} onClose={() => setProfileOpen(false)} /> : null}
     </header>
   );

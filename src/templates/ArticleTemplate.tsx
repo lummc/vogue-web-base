@@ -10,7 +10,7 @@ export function ArticleTemplate({ article }: { article: ArticleContent }) {
   const isLongform = article.variant === 'longform' && article.longform;
 
   return (
-    <div className="page-shell article-page-shell">
+    <div className={`page-shell article-page-shell article-page-shell--${article.slug}`}>
       <HeaderDesktop />
       <main>
         <ArticleHero hero={article.hero} />

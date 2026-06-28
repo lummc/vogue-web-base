@@ -44,14 +44,30 @@ function renderBlock(block: SectionBlock) {
   return <NewsListSection title={block.title} items={block.items} />;
 }
 
+function blockTitleClass(title: string) {
+  return title
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function blockTitle(block: SectionBlock) {
+  return 'title' in block ? block.title : block.item.title;
+}
+
 export function SectionTemplate({ data }: { data: SectionPageData }) {
   return (
-    <div className="page-shell section-page-shell">
+    <div className={`page-shell section-page-shell section-page-shell--${data.slug}`}>
       <HeaderDesktop />
       <main>
         <SectionHero hero={data.hero} />
         {data.blocks.map((block, index) => (
-          <div key={`${data.slug}-${block.type}-${block.title}`}>
+          <div
+            className={`section-block-wrapper section-block-wrapper--${block.type} section-block-wrapper--${blockTitleClass(blockTitle(block))}`}
+            key={`${data.slug}-${block.type}-${blockTitle(block)}`}
+          >
             {index > 0 ? <SectionDivider /> : null}
             {renderBlock(block)}
           </div>

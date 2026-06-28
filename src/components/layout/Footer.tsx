@@ -21,6 +21,7 @@ export function Footer() {
           </a>
         ))}
       </nav>
+      <p className="site-footer__legal">Conde Nast Mexico</p>
     </footer>
   );
 }
