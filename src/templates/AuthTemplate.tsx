@@ -1,4 +1,4 @@
-import { Apple, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { FormEvent, useState } from 'react';
 import { imageMap } from '../data/imageMap';
 import { Footer } from '../components/layout/Footer';
@@ -64,11 +64,11 @@ export function AuthTemplate({ mode = 'registro' }: { mode?: 'login' | 'registro
           </div>
           <div className="auth-page__socials">
             <button type="button" onClick={completeAuth}>
-              <span className="auth-page__google">G</span>
+              <img className="auth-page__social-icon auth-page__social-icon--google" src={imageMap.icons.google} alt="" aria-hidden="true" />
               Registrarse con Google
             </button>
             <button type="button" onClick={completeAuth}>
-              <Apple size={50} fill="currentColor" strokeWidth={1.2} />
+              <img className="auth-page__social-icon auth-page__social-icon--apple" src={imageMap.icons.apple} alt="" aria-hidden="true" />
               Registrarse con Apple
             </button>
           </div>

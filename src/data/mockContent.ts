@@ -26,6 +26,7 @@ export type ReelItem = {
   imageAlt: string;
   imageTone: 'warm' | 'rose' | 'dark' | 'ivory';
   imageSrc?: string;
+  videoSrc?: string;
 };
 
 export type PromoArticle = {
@@ -132,24 +133,28 @@ export const homePage = {
       title: 'Looks que definen la semana',
       imageAlt: 'Video editorial de moda',
       imageTone: 'warm',
+      videoSrc: imageMap.home.reels[0],
     },
     {
       id: 'reel-02',
       title: 'Belleza en backstage',
       imageAlt: 'Video editorial de belleza',
       imageTone: 'rose',
+      videoSrc: imageMap.home.reels[1],
     },
     {
       id: 'reel-03',
       title: 'Una noche en la ciudad',
       imageAlt: 'Video editorial urbano',
       imageTone: 'dark',
+      videoSrc: imageMap.home.reels[2],
     },
     {
       id: 'reel-04',
       title: 'Detalles de pasarela',
       imageAlt: 'Video editorial de pasarela',
       imageTone: 'ivory',
+      videoSrc: imageMap.home.reels[3],
     },
   ] satisfies ReelItem[],
   joinUs: {

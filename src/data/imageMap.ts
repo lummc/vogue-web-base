@@ -8,6 +8,12 @@
 export const imageMap = {
   home: {
     hero: assetPath('images/Home/PORTADA HOME_.jpg'),
+    reels: [
+      assetPath('images/Reels/REEL 1.mp4'),
+      assetPath('images/Reels/REEL 2.mp4'),
+      assetPath('images/Reels/REEL 3.mp4'),
+      assetPath('images/Reels/REEL 4.mp4'),
+    ],
     actualidad: [
       assetPath('images/Home/ACTUALIDAD IMG 1.jpg'),
       assetPath('images/Home/ACTUALIDAD IMG 2.jpg'),
@@ -265,6 +271,16 @@ export const imageMap = {
         assetPath('images/Artículo Bafweek/CARRUSEL-B-6.jpg'),
       ],
     },
+  },
+  icons: {
+    google: assetPath('images/Iconos/Google.svg'),
+    apple: assetPath('images/Iconos/Apple.svg'),
+    facebook: assetPath('images/Iconos/Facebook.svg'),
+    instagram: assetPath('images/Iconos/Instagram.svg'),
+    x: assetPath('images/Iconos/X.svg'),
+    youtube: assetPath('images/Iconos/Youtube.svg'),
+    pinterest: assetPath('images/Iconos/Pinterest.svg'),
+    tiktok: assetPath('images/Iconos/TikTok.svg'),
   },
 };
 

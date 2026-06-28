@@ -1,13 +1,13 @@
-import { Facebook, Globe, Instagram, Music2, Youtube } from 'lucide-react';
+import { imageMap } from '../../data/imageMap';
 import '../../styles/components.css';
 
 const socials = [
-  { label: 'Facebook', icon: <Facebook size={47} strokeWidth={1.6} /> },
-  { label: 'Instagram', icon: <Instagram size={56} strokeWidth={1.6} /> },
-  { label: 'Sitio web', icon: <Globe size={46} strokeWidth={1.6} /> },
-  { label: 'YouTube', icon: <Youtube size={60} strokeWidth={1.6} /> },
-  { label: 'Pinterest', icon: <span className="footer-social__letter">P</span> },
-  { label: 'TikTok', icon: <Music2 size={58} strokeWidth={1.7} /> },
+  { label: 'Facebook', iconSrc: imageMap.icons.facebook },
+  { label: 'Instagram', iconSrc: imageMap.icons.instagram },
+  { label: 'X', iconSrc: imageMap.icons.x },
+  { label: 'YouTube', iconSrc: imageMap.icons.youtube },
+  { label: 'Pinterest', iconSrc: imageMap.icons.pinterest },
+  { label: 'TikTok', iconSrc: imageMap.icons.tiktok },
 ];
 
 export function Footer() {
@@ -17,7 +17,7 @@ export function Footer() {
       <nav className="site-footer__socials" aria-label="Redes sociales">
         {socials.map((social) => (
           <a className="footer-social" href="#" aria-label={social.label} key={social.label}>
-            {social.icon}
+            <img src={social.iconSrc} alt="" aria-hidden="true" />
           </a>
         ))}
       </nav>
