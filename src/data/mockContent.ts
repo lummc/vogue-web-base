@@ -130,28 +130,28 @@ export const homePage = {
   reels: [
     {
       id: 'reel-01',
-      title: 'Looks que definen la semana',
+      title: 'Camiseta Mexico Mundial',
       imageAlt: 'Video editorial de moda',
       imageTone: 'warm',
       videoSrc: imageMap.home.reels[0],
     },
     {
       id: 'reel-02',
-      title: 'Belleza en backstage',
+      title: 'Cannes 2026',
       imageAlt: 'Video editorial de belleza',
       imageTone: 'rose',
       videoSrc: imageMap.home.reels[1],
     },
     {
       id: 'reel-03',
-      title: 'Una noche en la ciudad',
+      title: 'Gotico en la pasarela',
       imageAlt: 'Video editorial urbano',
       imageTone: 'dark',
       videoSrc: imageMap.home.reels[2],
     },
     {
       id: 'reel-04',
-      title: 'Detalles de pasarela',
+      title: '6 preguntas',
       imageAlt: 'Video editorial de pasarela',
       imageTone: 'ivory',
       videoSrc: imageMap.home.reels[3],

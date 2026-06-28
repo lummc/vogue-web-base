@@ -206,6 +206,12 @@ export const imageMap = {
   },
   vogueMedia: {
     hero: assetPath('images/Vogue Media/PORTADA VOGUE MEDIA_.jpg'),
+    metGala: [
+      assetPath('images/Vogue Media/CamilaCabello.webp'),
+      assetPath('images/Vogue Media/AnneHathaway.webp'),
+      assetPath('images/Vogue Media/CamilaMorrone.jpg'),
+      assetPath('images/Vogue Media/AnyaTaylorJoy.webp'),
+    ],
     talentoLatino: [
       assetPath('images/Vogue Media/TALENTO LATINO 1.jpg'),
       assetPath('images/Vogue Media/TALENTO LATINO 2.jpg'),
