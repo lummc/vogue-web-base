@@ -18,6 +18,7 @@ import {
   vogueMediaSection,
 } from './data/sectionContent';
 import { readRoutePath } from './utils/routes';
+import { useHorizontalCarouselDrag } from './hooks/useHorizontalCarouselDrag';
 import './styles/global.css';
 
 const sectionPages = {
@@ -58,6 +59,7 @@ function resolvePage(path: string) {
 
 function App() {
   const [path, setPath] = useState(readRoutePath());
+  useHorizontalCarouselDrag();
 
   useEffect(() => {
     const handleHashChange = () => setPath(readRoutePath());

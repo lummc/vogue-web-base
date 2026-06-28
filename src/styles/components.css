@@ -340,6 +340,34 @@
   flex: 0 0 auto;
 }
 
+.vogue-choice__viewport,
+.reels-section__track,
+.editorial-carousel-section__grid,
+.section-trend-carousel,
+.section-video-carousel,
+.section-article-carousel,
+.article-favorite-carousel__track,
+.article-recommendations__carousel,
+.community-card-row,
+.community-look-row {
+  cursor: grab;
+}
+
+.vogue-choice__viewport.is-dragging,
+.reels-section__track.is-dragging,
+.editorial-carousel-section__grid.is-dragging,
+.section-trend-carousel.is-dragging,
+.section-video-carousel.is-dragging,
+.section-article-carousel.is-dragging,
+.article-favorite-carousel__track.is-dragging,
+.article-recommendations__carousel.is-dragging,
+.community-card-row.is-dragging,
+.community-look-row.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
 .section-title {
   
   color: var(--color-text-muted);
