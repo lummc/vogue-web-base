@@ -1,54 +1,57 @@
-import { Bookmark, Eye, Heart } from 'lucide-react';
-import { useEffect } from 'react';
-import { LookVoteCard } from '../components/cards/LookVoteCard';
-import { PromoArticleCard } from '../components/cards/PromoArticleCard';
+import { useEffect, useState } from 'react';
 import { Footer } from '../components/layout/Footer';
 import { HeaderDesktop } from '../components/layout/HeaderDesktop';
-import { communityContent } from '../data/communityContent';
-import type { PromoArticle } from '../data/mockContent';
-import { isVogueUserLoggedIn } from '../utils/authState';
+import {
+  communityVogueHero,
+  communityVogueRegions,
+  type CommunityMetricKind,
+  type CommunityPngCard,
+  type CommunityPngRegion,
+} from '../data/communityContent';
+import { getVogueUserProfile, isVogueUserLoggedIn } from '../utils/authState';
 import { navigateTo } from '../utils/routes';
 import '../styles/components.css';
 
-type MetricArticle = PromoArticle & { metric: string };
+const metricTabs: Array<{ id: CommunityMetricKind; label: string }> = [
+  { id: 'saved', label: 'Mas guardados' },
+  { id: 'likes', label: 'Mas likes' },
+  { id: 'views', label: 'Mas vistos' },
+];
 
-function MetricCard({ article, icon }: { article: MetricArticle; icon: 'eye' | 'bookmark' | 'heart' }) {
-  const Icon = icon === 'eye' ? Eye : icon === 'bookmark' ? Bookmark : Heart;
-
+function CommunityPngAssetCard({ card }: { card: CommunityPngCard }) {
   return (
-    <article className="community-metric-card">
-      <div
-        className={`community-metric-card__media community-metric-card__media--${article.imageTone}`}
-        role="img"
-        aria-label={article.imageAlt}
-      >
-        {article.imageSrc ? <img src={article.imageSrc} alt={article.imageAlt} /> : null}
-      </div>
-      <p>{article.category}</p>
-      <h3>{article.title}</h3>
-      <div className="community-metric-card__metric">
-        <Icon size={14} strokeWidth={1.7} />
-        <span>{article.metric}</span>
-      </div>
+    <article className="community-png-card" aria-label={card.imageAlt}>
+      <img src={card.imageSrc} alt={card.imageAlt} />
     </article>
   );
 }
 
-function RankingSection({
-  title,
-  articles,
-  icon,
-}: {
-  title: string;
-  articles: MetricArticle[];
-  icon: 'eye' | 'bookmark' | 'heart';
-}) {
+function CommunityRegionSection({ region, index }: { region: CommunityPngRegion; index: number }) {
+  const [activeTab, setActiveTab] = useState<CommunityMetricKind>('saved');
+  const cards = region.sets[activeTab];
+  const titleId = `community-region-${index}`;
+
   return (
-    <section className="community-ranking" aria-labelledby={`${title}-title`}>
-      <h2 id={`${title}-title`}>{title}</h2>
-      <div className="community-ranking__grid">
-        {articles.map((article) => (
-          <MetricCard article={article} icon={icon} key={`${title}-${article.title}`} />
+    <section className="community-region" aria-labelledby={titleId}>
+      <h2 id={titleId}>{region.title}</h2>
+      {region.subtitle ? <p>{region.subtitle}</p> : null}
+      <div className="community-region__tabs" role="tablist" aria-label={region.title}>
+        {metricTabs.map((tab) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            className={activeTab === tab.id ? 'is-active' : ''}
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+      <div className="community-region__grid community-region__grid--png">
+        {cards.map((card) => (
+          <CommunityPngAssetCard card={card} key={`${region.title}-${activeTab}-${card.imageSrc}`} />
         ))}
       </div>
     </section>
@@ -57,10 +60,11 @@ function RankingSection({
 
 export function CommunityTemplate() {
   const loggedIn = isVogueUserLoggedIn();
+  const profile = getVogueUserProfile();
 
   useEffect(() => {
     if (!loggedIn) {
-      navigateTo('/registro', true);
+      navigateTo('/', true);
     }
   }, [loggedIn]);
 
@@ -69,70 +73,30 @@ export function CommunityTemplate() {
   }
 
   return (
-    <div className="page-shell community-page-shell">
+    <div className="page-shell community-page-shell community-page-shell--new">
       <HeaderDesktop />
-      <main className="community-page section-frame">
-        <section className="community-strip" aria-labelledby="saved-title">
-          <h1 id="saved-title">Mis guardados</h1>
-          <p>Los articulos que mas te interesaron</p>
-          <div className="community-card-row">
-            {communityContent.saved.map((article) => (
-              <PromoArticleCard article={article} key={article.title} />
-            ))}
+      <main className="community-page-new">
+        <section className="community-hero-new community-hero-new--asset" aria-label={communityVogueHero.imageAlt}>
+          <img src={communityVogueHero.imageSrc} alt={communityVogueHero.imageAlt} />
+          <div className="community-hero-new__copy">
+            <p>{communityVogueHero.category}</p>
+            <h1>{communityVogueHero.title}</h1>
+            <span>{communityVogueHero.author}</span>
+            <small>{communityVogueHero.date}</small>
           </div>
         </section>
 
-        <hr className="community-divider" />
-
-        <section className="community-strip" aria-labelledby="likes-title">
-          <h2 id="likes-title">Mis likes</h2>
-          <p>Encuentra las fotos y los articulos a los que le diste like</p>
-          <div className="community-look-row">
-            {communityContent.likedLooks.map((look) => (
-              <LookVoteCard look={look} key={look.id} />
-            ))}
-          </div>
-          <div className="community-card-row community-card-row--likes">
-            {communityContent.likedArticles.map((article) => (
-              <PromoArticleCard article={article} key={article.title} />
-            ))}
-          </div>
+        <section className="community-intro section-frame" aria-labelledby="community-intro-title">
+          <h2 id="community-intro-title">Comunidad Vogue</h2>
+          <p>Interactua con nuestra comunidad de lectoras y encuentra tus articulos favoritos</p>
+          <span>Hola, {profile.name || 'Fernanda'}</span>
         </section>
 
-        <hr className="community-divider" />
-
-        <section className="community-strip community-polls" aria-labelledby="polls-title">
-          <h2 id="polls-title">Mis encuestas</h2>
-          <p>Los resultados de las encuestas en las que participaste</p>
-          <div className="community-poll-card">
-            <h3>¿Que esperas del nuevo album de Camila Cabello?</h3>
-            <div>
-              <span>Mas sonidos latinos</span>
-              <strong>30%</strong>
-              <i style={{ width: '30%' }} />
-            </div>
-            <div>
-              <span>Letras mas personales</span>
-              <strong>55%</strong>
-              <i style={{ width: '55%' }} />
-            </div>
-            <div>
-              <span>Sonido totalmente distinto</span>
-              <strong>72%</strong>
-              <i style={{ width: '72%' }} />
-            </div>
-          </div>
-        </section>
-
-        <hr className="community-divider" />
-
-        <section className="community-strip" aria-labelledby="community-title">
-          <h2 id="community-title">Comunidad Vogue</h2>
-          <p>Interactua con nuestra comunidad de lectoras</p>
-          <RankingSection title="Los mas visto esta semana" articles={communityContent.mostViewed} icon="eye" />
-          <RankingSection title="Lo mas guardado esta semana" articles={communityContent.mostSaved} icon="bookmark" />
-          <RankingSection title="Lo mas likeado esta semana" articles={communityContent.mostLiked} icon="heart" />
-        </section>
+        <div className="community-region-stack section-frame">
+          {communityVogueRegions.map((region, index) => (
+            <CommunityRegionSection region={region} index={index} key={region.title} />
+          ))}
+        </div>
       </main>
       <Footer />
     </div>

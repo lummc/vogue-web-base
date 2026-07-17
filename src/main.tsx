@@ -6,6 +6,7 @@ import { SearchTemplate } from './templates/SearchTemplate';
 import { ArticleTemplate } from './templates/ArticleTemplate';
 import { AuthTemplate } from './templates/AuthTemplate';
 import { CommunityTemplate } from './templates/CommunityTemplate';
+import { MySpaceTemplate } from './templates/MySpaceTemplate';
 import { SectionTemplate } from './templates/SectionTemplate';
 import { bafweekArticle, camilaArticle, guadalajaraArticle } from './data/articleContent';
 import { homePage } from './data/mockContent';
@@ -48,6 +49,8 @@ function resolvePage(path: string) {
     <SearchTemplate />
   ) : path === '/comunidad' ? (
     <CommunityTemplate />
+  ) : path === '/mi-espacio' ? (
+    <MySpaceTemplate />
   ) : articleData ? (
     <ArticleTemplate article={articleData} />
   ) : sectionData ? (

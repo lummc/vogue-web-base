@@ -17,6 +17,7 @@ export type LookVote = {
   imageAlt: string;
   imageTone: 'copper' | 'silver' | 'ivory' | 'wine' | 'charcoal';
   liked?: boolean;
+  likesCount?: number;
   imageSrc?: string;
 };
 
@@ -234,6 +235,118 @@ export const homePage = {
       imageSrc: imageMap.home.noTeLoPierdas[3],
     },
   ] satisfies PromoArticle[],
+};
+
+export const homeReadingArgentina = [
+  {
+    category: 'Moda',
+    title: 'Para su coleccion Otono-Invierno 2026, Adrian Appiolaza regresa a un terreno mas intimo: Argentina, su tierra natal',
+    author: 'Por Sebastian Cabrices',
+    date: '28 de febrero de 2026',
+    imageAlt: 'Moda argentina editorial',
+    imageTone: 'warm',
+    imageSrc: imageMap.home.actualidad[0],
+  },
+  {
+    category: 'Moda',
+    title: 'Tenis inspirados en el futbol para anotar un gol de estilo con faldas y vestidos',
+    author: 'Por Michel Mejia',
+    date: '6 de junio de 2026',
+    imageAlt: 'Moda y futbol',
+    imageTone: 'rose',
+    imageSrc: imageMap.home.actualidad[1],
+  },
+  {
+    category: 'Estilo de vida',
+    title: 'Cuando Argentina gano el Mundial Mexico 1986: Con la mano de Dios y el Gol del Siglo',
+    author: 'Por Miguel Vicencio',
+    date: '3 de junio de 2026',
+    imageAlt: 'Archivo de futbol argentino',
+    imageTone: 'dark',
+    imageSrc: imageMap.home.actualidad[2],
+  },
+] satisfies PromoArticle[];
+
+export const homeMostReadWeek = [
+  {
+    category: 'Moda',
+    title: 'La coleccion de lujo perdio con las que Fina Holland debuto en el mundial',
+    author: 'Por Sebastian Cabrices',
+    date: '28 de febrero de 2026',
+    imageAlt: 'Moda leida de la semana',
+    imageTone: 'warm',
+    imageSrc: imageMap.moda.latinoamericana[0],
+  },
+  {
+    category: 'Moda',
+    title: 'Grace Abrams solo intento vivir el momento',
+    author: 'Por Fernanda Perez',
+    date: '8 de junio de 2026',
+    imageAlt: 'Retrato editorial de Grace Abrams',
+    imageTone: 'ivory',
+    imageSrc: imageMap.moda.latinoamericana[2],
+  },
+  {
+    category: 'Moda',
+    title: 'Por que deberias deshacerte de vestidos, antes de conservarlos por experiencia',
+    author: 'Por Miguel Mejia',
+    date: '7 de junio de 2026',
+    imageAlt: 'Editorial de lectura semanal',
+    imageTone: 'rose',
+    imageSrc: imageMap.belleza.bienestar[1],
+  },
+] satisfies PromoArticle[];
+
+export const homeForYou = [
+  {
+    category: 'Moda',
+    title: 'De Beccar a Paris: quien es Mica Arganaraz, la modelo argentina',
+    imageAlt: 'Modelo argentina',
+    imageTone: 'rose',
+    imageSrc: imageMap.moda.disenoLatino[0],
+  },
+  {
+    category: 'Belleza',
+    title: 'Los secretos de TINI para un cabello brilloso',
+    imageAlt: 'Belleza personalizada',
+    imageTone: 'ivory',
+    imageSrc: imageMap.belleza.cabello[1],
+  },
+  {
+    category: 'Estilo de vida',
+    title: 'De Dakota Johnson a los invitados de Taylor y Travis Kelce',
+    imageAlt: 'Estilo de vida personalizado',
+    imageTone: 'warm',
+    imageSrc: imageMap.estiloDeVida.queHacer[0],
+  },
+] satisfies PromoArticle[];
+
+export const homeLoggedOutImageStrips = {
+  mostReadWeek: imageMap.home.mostReadWeekExported.map((src, index) => ({
+    src,
+    alt: `Lo más leído esta semana ${index + 1}`,
+  })),
+  mostReadLatam: imageMap.home.mostReadLatamExported.map((src, index) => ({
+    src,
+    alt: `Lo más leído en Latinoamérica ${index + 1}`,
+  })),
+};
+
+export const homeLoggedInImageStrips = {
+  mostReadArgentina: imageMap.home.mostReadArgentinaExported.map((src, index) => ({
+    src,
+    alt: `Lo más leído en Argentina ${index + 1}`,
+    width: [454, 335, 335][index],
+  })),
+  paraVos: imageMap.home.forYouExported.map((src, index) => ({
+    src,
+    alt: `Para vos basado en tus intereses ${index + 1}`,
+  })),
+  mostReadLatam: imageMap.home.mostReadLatamExported.map((src, index) => ({
+    src,
+    alt: `Lo más leído en Latinoamérica ${index + 1}`,
+    width: [454, 335, 335][index],
+  })),
 };
 
 export type HomePage = typeof homePage;

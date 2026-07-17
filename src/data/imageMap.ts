@@ -44,6 +44,27 @@ export const imageMap = {
       assetPath('images/Home/NO TE LO PIERDAS 4.jpg'),
       assetPath('images/Home/NO TE LO PIERDAS 5.jpg'),
     ],
+    mostReadWeekExported: [
+      assetPath('images/Home/LoMasLeidoEstaSemana (1).png'),
+      assetPath('images/Home/LoMasLeidoEstaSemana (2).png'),
+      assetPath('images/Home/LoMasLeidoEstaSemana (3).png'),
+    ],
+    mostReadArgentinaExported: [
+      assetPath('images/Home/LoMasLeidoEnArgentina (1).png'),
+      assetPath('images/Home/LoMasLeidoEnArgentina (2).png'),
+      assetPath('images/Home/LoMasLeidoEnArgentina (3).png'),
+    ],
+    forYouExported: [
+      assetPath('images/Home/ParaVos (1).png'),
+      assetPath('images/Home/ParaVos (2).png'),
+      assetPath('images/Home/ParaVos (3).png'),
+      assetPath('images/Home/ParaVos (4).png'),
+    ],
+    mostReadLatamExported: [
+      assetPath('images/Home/LoMasLeidoLatinoAmerica1 (1).png'),
+      assetPath('images/Home/LoMasLeidoLatinoAmerica1 (2).png'),
+      assetPath('images/Home/LoMasLeidoLatinoAmerica1 (3).png'),
+    ],
   },
   moda: {
     hero: assetPath('images/Moda/PORTADA MODA.jpg'),
@@ -103,6 +124,12 @@ export const imageMap = {
       assetPath('images/Belleza/CABELLO-2.jpg'),
       assetPath('images/Belleza/CABELLO-3.jpg'),
       assetPath('images/Belleza/CABELLO-4.jpg'),
+    ],
+    cabelloCarrusel: [
+      assetPath('images/Belleza/Cabello (1).png'),
+      assetPath('images/Belleza/Cabello (2).png'),
+      assetPath('images/Belleza/Cabello (3).png'),
+      assetPath('images/Belleza/Cabello (4).png'),
     ],
     bienestar: [
       assetPath('images/Belleza/BIENESTAR-1.jpg'),
@@ -235,6 +262,80 @@ export const imageMap = {
       assetPath('images/Vogue Media/SECRETOS DE BELLEZA 3.jpg'),
       assetPath('images/Vogue Media/SECRETOS DE BELLEZA 4.jpg'),
     ],
+  },
+  communityVogue: {
+    hero: assetPath('images/Comunidad Vogue/PortadaComunidadVogue.png'),
+    latam: {
+      saved: [
+        assetPath('images/Comunidad Vogue/MasGuardadosLatam (1).png'),
+        assetPath('images/Comunidad Vogue/MasGuardadosLatam (2).png'),
+        assetPath('images/Comunidad Vogue/MasGuardadosLatam (3).png'),
+        assetPath('images/Comunidad Vogue/MasGuardadosLatam (4).png'),
+        assetPath('images/Comunidad Vogue/MasGuardadosLatam (5).png'),
+        assetPath('images/Comunidad Vogue/MasGuardadosLatam (6).png'),
+      ],
+      likes: [
+        assetPath('images/Comunidad Vogue/MasLikesLatam (1).png'),
+        assetPath('images/Comunidad Vogue/MasLikesLatam (2).png'),
+        assetPath('images/Comunidad Vogue/MasLikesLatam (3).png'),
+      ],
+      views: [
+        assetPath('images/Comunidad Vogue/MasVistosLatam (1).png'),
+        assetPath('images/Comunidad Vogue/MasVistosLatam (2).png'),
+        assetPath('images/Comunidad Vogue/MasVistosLatam (3).png'),
+      ],
+    },
+    mexico: {
+      saved: [
+        assetPath('images/Comunidad Vogue/PopularEnMexicoEstaSemana 1.png'),
+        assetPath('images/Comunidad Vogue/PopularEnMexicoEstaSemana 2.png'),
+        assetPath('images/Comunidad Vogue/PopularEnMexicoEstaSemana 3.png'),
+      ],
+      likes: [
+        assetPath('images/Comunidad Vogue/MEXICOpopularcomponente.png'),
+        assetPath('images/Comunidad Vogue/PopularEnMexicoEstaSemana 2.png'),
+        assetPath('images/Comunidad Vogue/PopularEnMexicoEstaSemana 3.png'),
+      ],
+      views: [
+        assetPath('images/Comunidad Vogue/MexicoNoticiaGrande.png'),
+        assetPath('images/Comunidad Vogue/MEXICOpopularcomponente.png'),
+        assetPath('images/Comunidad Vogue/PopularEnMexicoEstaSemana 1.png'),
+      ],
+    },
+    chile: {
+      saved: [
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 1.png'),
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 2.png'),
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 3.png'),
+      ],
+      likes: [
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 2.png'),
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 3.png'),
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 1.png'),
+      ],
+      views: [
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 3.png'),
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 1.png'),
+        assetPath('images/Comunidad Vogue/POPULAREnCHILEESTASEMANA 2.png'),
+      ],
+    },
+    brasil: {
+      saved: [
+        assetPath('images/Comunidad Vogue/POPULARENBrasilESTASEMANA 1.png'),
+        assetPath('images/Comunidad Vogue/POPULARENBRASILESTASEMANA 2.png'),
+        assetPath('images/Comunidad Vogue/POPULARENBRASILESTASEMANA  3.png'),
+      ],
+      likes: [
+        assetPath('images/Comunidad Vogue/POPULARENBRASILESTASEMANA 2.png'),
+        assetPath('images/Comunidad Vogue/POPULARENBRASILESTASEMANA  3.png'),
+        assetPath('images/Comunidad Vogue/POPULARENBrasilESTASEMANA 1.png'),
+      ],
+      views: [
+        assetPath('images/Comunidad Vogue/POPULARENBRASILESTASEMANA  3.png'),
+        assetPath('images/Comunidad Vogue/POPULARENBrasilESTASEMANA 1.png'),
+        assetPath('images/Comunidad Vogue/POPULARENBRASILESTASEMANA 2.png'),
+      ],
+    },
   },
   articles: {
     camila: {

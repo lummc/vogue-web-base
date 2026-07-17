@@ -1,12 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { Bookmark, Heart, Share2 } from 'lucide-react';
 import type { ArticleContent } from '../../data/articleContent';
+import { articleEngagementMetrics } from '../../data/engagementMetrics';
 import { requireVogueAuth } from '../../utils/authInteraction';
+import { isVogueUserLoggedIn } from '../../utils/authState';
+import { displayCount, incrementShareDelta, readEngagementToggle, readShareDelta, writeEngagementToggle } from '../../utils/engagementState';
 import '../../styles/components.css';
 
-export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
-  const [saved, setSaved] = useState(false);
-  const [liked, setLiked] = useState(false);
+export function ArticleHero({ hero, slug }: { hero: ArticleContent['hero']; slug: string }) {
+  const baseMetrics = articleEngagementMetrics[slug] ?? { likes: 2200, saves: 1500, shares: 3000 };
+  const [saved, setSaved] = useState(() => (isVogueUserLoggedIn() ? readEngagementToggle('save', slug) : false));
+  const [liked, setLiked] = useState(() => (isVogueUserLoggedIn() ? readEngagementToggle('like', slug) : false));
+  const [shareDelta, setShareDelta] = useState(() => readShareDelta(slug));
   const [copied, setCopied] = useState(false);
   const [justSaved, setJustSaved] = useState(false);
   const [justLiked, setJustLiked] = useState(false);
@@ -30,7 +35,9 @@ export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
         savedTimer.current = window.setTimeout(() => setJustSaved(false), 420);
       }
 
-      setSaved(!saved);
+      const next = !saved;
+      setSaved(next);
+      writeEngagementToggle('save', slug, next);
     });
   };
 
@@ -43,7 +50,9 @@ export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
         likedTimer.current = window.setTimeout(() => setJustLiked(false), 420);
       }
 
-      setLiked(!liked);
+      const next = !liked;
+      setLiked(next);
+      writeEngagementToggle('like', slug, next);
     });
   };
 
@@ -52,9 +61,11 @@ export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
 
     try {
       await navigator.clipboard?.writeText(url);
+      setShareDelta(incrementShareDelta(slug));
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1600);
     } catch {
+      setShareDelta(incrementShareDelta(slug));
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1600);
     }
@@ -82,6 +93,7 @@ export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
           onClick={toggleSaved}
         >
           <Bookmark size={34} strokeWidth={1.6} fill={saved ? 'currentColor' : 'none'} />
+          <span className="article-action-button__count">{displayCount(baseMetrics.saves + (saved ? 1 : 0))}</span>
         </button>
         <button
           type="button"
@@ -92,6 +104,7 @@ export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
           onClick={toggleLiked}
         >
           <Heart size={34} strokeWidth={1.6} fill={liked ? 'currentColor' : 'none'} />
+          <span className="article-action-button__count">{displayCount(baseMetrics.likes + (liked ? 1 : 0))}</span>
           {justLiked ? (
             <span className="floating-heart" aria-hidden="true">
               <Heart size={14} strokeWidth={1.5} fill="currentColor" />
@@ -100,6 +113,7 @@ export function ArticleHero({ hero }: { hero: ArticleContent['hero'] }) {
         </button>
         <button type="button" className="article-action-button" aria-label="Compartir" data-active={copied} onClick={shareArticle}>
           <Share2 size={34} strokeWidth={1.6} />
+          <span className="article-action-button__count">{displayCount(baseMetrics.shares + shareDelta)}</span>
           {copied ? <span className="article-action-button__label">Copiado</span> : null}
         </button>
       </div>

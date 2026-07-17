@@ -226,3 +226,182 @@ export const communityContent = {
     },
   ] satisfies Array<PromoArticle & { metric: string }>,
 };
+
+export type CommunityMetricKind = 'saved' | 'likes' | 'views';
+export type CommunityRegion = {
+  title: string;
+  subtitle?: string;
+  sets: Record<CommunityMetricKind, Array<PromoArticle & { metric: string }>>;
+};
+
+const rotateArticles = (articles: Array<PromoArticle & { metric: string }>, offset: number) => [
+  ...articles.slice(offset),
+  ...articles.slice(0, offset),
+];
+
+export const communityHero = {
+  category: 'Vogue Media',
+  title: 'Willy Chavarria es el primer editor invitado para Vogue Latinoamerica',
+  imageSrc: imageMap.vogueMedia.hero,
+  imageAlt: 'Comunidad Vogue hero',
+};
+
+export const communityRegions: CommunityRegion[] = [
+  {
+    title: 'Popular en tu pais',
+    subtitle: 'Tambien te puede interesar',
+    sets: {
+      saved: communityContent.mostSaved,
+      likes: communityContent.mostLiked,
+      views: communityContent.mostViewed,
+    },
+  },
+  {
+    title: 'Popular en Latinoamerica esta semana',
+    sets: {
+      saved: rotateArticles(communityContent.mostSaved, 0),
+      likes: rotateArticles(communityContent.mostLiked, 1),
+      views: rotateArticles(communityContent.mostViewed, 2),
+    },
+  },
+  {
+    title: 'Popular en Mexico esta semana',
+    sets: {
+      saved: [
+        { ...communityContent.mostViewed[5], metric: '11.200' },
+        { ...communityContent.mostViewed[1], metric: '9.800' },
+        { ...communityContent.mostViewed[2], metric: '7.100' },
+      ],
+      likes: rotateArticles(communityContent.mostLiked, 2).slice(0, 3),
+      views: rotateArticles(communityContent.mostViewed, 1).slice(0, 3),
+    },
+  },
+  {
+    title: 'Popular en Chile esta semana',
+    sets: {
+      saved: [
+        { ...communityContent.mostSaved[3], metric: '11.000' },
+        { ...communityContent.mostLiked[3], metric: '9.500' },
+        { ...communityContent.mostSaved[2], metric: '8.500' },
+      ],
+      likes: rotateArticles(communityContent.mostLiked, 3).slice(0, 3),
+      views: rotateArticles(communityContent.mostViewed, 3).slice(0, 3),
+    },
+  },
+  {
+    title: 'Popular en Brasil esta semana',
+    sets: {
+      saved: [
+        { ...communityContent.mostViewed[3], metric: '13.500' },
+        { ...communityContent.mostViewed[0], metric: '10.700' },
+        { ...communityContent.mostSaved[0], metric: '9.500' },
+      ],
+      likes: rotateArticles(communityContent.mostLiked, 4).slice(0, 3),
+      views: rotateArticles(communityContent.mostViewed, 4).slice(0, 3),
+    },
+  },
+  {
+    title: 'Popular en Colombia esta semana',
+    sets: {
+      saved: [
+        { ...communityContent.saved[0], metric: '11.000' },
+        { ...communityContent.mostSaved[4], metric: '9.800' },
+        { ...communityContent.mostSaved[5], metric: '7.800' },
+      ],
+      likes: rotateArticles(communityContent.mostLiked, 5).slice(0, 3),
+      views: rotateArticles(communityContent.mostViewed, 5).slice(0, 3),
+    },
+  },
+];
+
+export type CommunityPngCard = {
+  imageSrc: string;
+  imageAlt: string;
+};
+
+export type CommunityPngRegion = {
+  title: string;
+  subtitle?: string;
+  sets: Record<CommunityMetricKind, CommunityPngCard[]>;
+};
+
+const pngCard = (imageSrc: string, imageAlt: string): CommunityPngCard => ({
+  imageSrc,
+  imageAlt,
+});
+
+const toPngCards = (paths: string[], label: string) => paths.map((path, index) => pngCard(path, `${label} ${index + 1}`));
+
+export const communityVogueHero = {
+  category: 'VOGUE MEDIA',
+  title: 'Willy Chavarria es el primer editor invitado para Vogue Latinoamérica',
+  author: 'POR ANYA ISIM',
+  date: '20 de junio de 2025',
+  imageSrc: imageMap.communityVogue.hero,
+  imageAlt: 'Portada Comunidad Vogue',
+};
+
+const latamSaved = toPngCards(imageMap.communityVogue.latam.saved, 'Mas guardados Latinoamerica');
+const latamLikes = toPngCards(imageMap.communityVogue.latam.likes, 'Mas likes Latinoamerica');
+const latamViews = toPngCards(imageMap.communityVogue.latam.views, 'Mas vistos Latinoamerica');
+const mexicoSaved = toPngCards(imageMap.communityVogue.mexico.saved, 'Mas guardados Mexico');
+const mexicoLikes = toPngCards(imageMap.communityVogue.mexico.likes, 'Mas likes Mexico');
+const mexicoViews = toPngCards(imageMap.communityVogue.mexico.views, 'Mas vistos Mexico');
+const chileSaved = toPngCards(imageMap.communityVogue.chile.saved, 'Mas guardados Chile');
+const chileLikes = toPngCards(imageMap.communityVogue.chile.likes, 'Mas likes Chile');
+const chileViews = toPngCards(imageMap.communityVogue.chile.views, 'Mas vistos Chile');
+const brasilSaved = toPngCards(imageMap.communityVogue.brasil.saved, 'Mas guardados Brasil');
+const brasilLikes = toPngCards(imageMap.communityVogue.brasil.likes, 'Mas likes Brasil');
+const brasilViews = toPngCards(imageMap.communityVogue.brasil.views, 'Mas vistos Brasil');
+
+export const communityVogueRegions: CommunityPngRegion[] = [
+  {
+    title: 'Popular en tu pais',
+    subtitle: 'Tambien te puede interesar',
+    sets: {
+      saved: [...mexicoSaved.slice(0, 2), ...latamSaved.slice(0, 1)],
+      likes: latamLikes,
+      views: latamViews,
+    },
+  },
+  {
+    title: 'Popular en Latinoamerica esta semana',
+    sets: {
+      saved: latamSaved,
+      likes: latamLikes,
+      views: latamViews,
+    },
+  },
+  {
+    title: 'Popular en Mexico esta semana',
+    sets: {
+      saved: mexicoSaved,
+      likes: mexicoLikes,
+      views: mexicoViews,
+    },
+  },
+  {
+    title: 'Popular en Chile esta semana',
+    sets: {
+      saved: chileSaved,
+      likes: chileLikes,
+      views: chileViews,
+    },
+  },
+  {
+    title: 'Popular en Brasil esta semana',
+    sets: {
+      saved: brasilSaved,
+      likes: brasilLikes,
+      views: brasilViews,
+    },
+  },
+  {
+    title: 'Popular en Colombia esta semana',
+    sets: {
+      saved: latamSaved.slice(0, 3),
+      likes: latamLikes,
+      views: latamViews,
+    },
+  },
+];

@@ -1,6 +1,7 @@
 import { Search, X } from 'lucide-react';
-import type { FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { navItems } from '../../data/mockContent';
+import { isVogueUserLoggedIn, subscribeToVogueAuthChange } from '../../utils/authState';
 import { navigateTo, routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
@@ -10,11 +11,17 @@ type MobileMenuProps = {
 };
 
 export function MobileMenu({ open = false, onClose }: MobileMenuProps) {
+  const [loggedIn, setLoggedIn] = useState(isVogueUserLoggedIn);
+
+  useEffect(() => subscribeToVogueAuthChange(() => setLoggedIn(isVogueUserLoggedIn())), []);
+
   const submitSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onClose();
     navigateTo('/busqueda');
   };
+
+  const visibleNavItems = loggedIn ? [...navItems, { label: 'Comunidad Vogue', href: routePath('/comunidad') }] : navItems;
 
   return (
     <aside className="mobile-menu" data-open={open} aria-hidden={!open}>
@@ -27,7 +34,7 @@ export function MobileMenu({ open = false, onClose }: MobileMenuProps) {
         <input aria-label="Buscar" placeholder="BUSCAR..." />
       </form>
       <nav aria-label="Menu mobile">
-        {navItems.map((item) => (
+        {visibleNavItems.map((item) => (
           <a href={routePath(item.href)} key={item.href} onClick={onClose}>
             {item.label}
           </a>

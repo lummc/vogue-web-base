@@ -6,10 +6,11 @@ import '../../styles/components.css';
 type FavoriteButtonProps = {
   pressed?: boolean;
   label: string;
+  count?: number | string;
   onClick?: () => void;
 };
 
-export function FavoriteButton({ pressed = false, label, onClick }: FavoriteButtonProps) {
+export function FavoriteButton({ pressed = false, label, count, onClick }: FavoriteButtonProps) {
   const [justLiked, setJustLiked] = useState(false);
   const animationTimer = useRef<number | null>(null);
 
@@ -56,6 +57,7 @@ export function FavoriteButton({ pressed = false, label, onClick }: FavoriteButt
           <Heart size={14} strokeWidth={1.5} fill="currentColor" />
         </span>
       ) : null}
+      {count !== undefined ? <span className="favorite-button__count">{count}</span> : null}
     </button>
   );
 }

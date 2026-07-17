@@ -9,6 +9,7 @@ const horizontalCarouselSelector = [
   '.section-article-carousel',
   '.article-favorite-carousel__track',
   '.article-recommendations__carousel',
+  '.home-reading-section__viewport',
   '.community-card-row',
   '.community-look-row',
 ].join(', ');

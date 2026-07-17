@@ -1,6 +1,6 @@
 import { UserRound, X } from 'lucide-react';
 import { imageMap } from '../../data/imageMap';
-import { setVogueUserLoggedIn } from '../../utils/authState';
+import { getVogueUserProfile, logoutVogueUser } from '../../utils/authState';
 import { navigateTo, routePath } from '../../utils/routes';
 import '../../styles/components.css';
 
@@ -10,8 +10,9 @@ type ProfileDrawerProps = {
 };
 
 export function ProfileDrawer({ loggedIn, onClose }: ProfileDrawerProps) {
+  const profile = getVogueUserProfile();
   const logout = () => {
-    setVogueUserLoggedIn(false);
+    logoutVogueUser();
     onClose();
     navigateTo('/');
   };
@@ -26,11 +27,11 @@ export function ProfileDrawer({ loggedIn, onClose }: ProfileDrawerProps) {
           </button>
           <h2>
             <UserRound size={28} strokeWidth={1.6} />
-            Fernanda
+            {profile.name || 'Fernanda'}
           </h2>
           <nav>
-            <a href={routePath('/comunidad')} onClick={onClose}>
-              Comunidad vogue
+            <a className="community-sidebar__profile-link" href={routePath('/mi-espacio')} onClick={onClose}>
+              Tu perfil
             </a>
             <a href="mailto:hola@vogue.mx" onClick={onClose}>
               Comunicate con nosotros
@@ -41,7 +42,7 @@ export function ProfileDrawer({ loggedIn, onClose }: ProfileDrawerProps) {
           </nav>
           <div className="community-sidebar__card">
             <img src={imageMap.articles.camila.hero} alt="Editorial Comunidad Vogue" />
-            <span>Bienvenida Fernanda!</span>
+            <span>Bienvenida {profile.name || 'Fernanda'}!</span>
           </div>
         </aside>
       ) : (

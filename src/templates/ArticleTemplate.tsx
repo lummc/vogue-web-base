@@ -13,7 +13,7 @@ export function ArticleTemplate({ article }: { article: ArticleContent }) {
     <div className={`page-shell article-page-shell article-page-shell--${article.slug}`}>
       <HeaderDesktop />
       <main>
-        <ArticleHero hero={article.hero} />
+        <ArticleHero hero={article.hero} slug={article.slug} />
         {isLongform ? (
           <LongArticleBody article={article} />
         ) : (

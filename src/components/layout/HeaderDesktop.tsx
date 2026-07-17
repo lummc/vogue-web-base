@@ -35,6 +35,8 @@ export function HeaderDesktop() {
     return () => window.removeEventListener('keydown', closeOnEscape);
   }, [profileOpen]);
 
+  const visibleNavItems = loggedIn ? [...navItems, { label: 'Comunidad Vogue', href: routePath('/comunidad') }] : navItems;
+
   return (
     <header className="site-header">
       <button
@@ -65,7 +67,7 @@ export function HeaderDesktop() {
         </a>
       </div>
       <nav className="desktop-nav" aria-label="Principal">
-        {navItems.map((item) => (
+        {visibleNavItems.map((item) => (
           <a href={routePath(item.href)} key={item.href}>
             {item.label}
           </a>
